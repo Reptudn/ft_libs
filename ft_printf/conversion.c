@@ -26,3 +26,7 @@ void put_double(double num) {
 void put_float(float num) {
 
 }
+
+void put_pointer(void *ptr) {
+
+}

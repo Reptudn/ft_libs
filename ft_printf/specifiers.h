@@ -2,6 +2,7 @@
 #define SPECIFIERS_H
 
 #define PREFIX		'%'
+
 #define CHAR		'c'
 #define DECIMAL		'd'
 #define FLOAT		'f'

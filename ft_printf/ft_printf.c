@@ -2,6 +2,7 @@
 #include <stdarg.h>
 
 #include "specifiers.h"
+#include "ft_printf.h"
 
 #include <stdio.h>
 
@@ -11,12 +12,30 @@
 // printf stuff
 // https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm
 
+
+
 void ft_printf(char *str, int count, ...) {
 
     va_list keys;
     va_start(keys, count);
 
-    
+    int i = 0;
+    int param_index = 0;
+
+    while(str[i] != 0) {
+
+        if(str[i+1] != 0 && is_specifier(str[i], str[i+1]) > 0) {
+
+
+            param_index++;
+            i += 2;
+            continue;
+        }
+
+        put_char(str[i]);
+
+        i++;
+    }
 
     va_end(keys);
 
