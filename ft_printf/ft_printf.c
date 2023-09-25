@@ -12,7 +12,12 @@
 // printf stuff
 // https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm
 
+// cc ft_printf.c ft_printf.h conversion.c base_system_conversion.c helper.c specifiers.h
 
+/*
+What if the arguments are not in correcct order and i handle a string as int?
+-> gotta check for that
+*/
 
 void ft_printf(char *str, int count, ...) {
 
@@ -53,7 +58,7 @@ void ft_printf(char *str, int count, ...) {
 //testing main func
 int main(void) {
 
-    char *str = "Test Message %d,pog";
+    char *str = "Test \nMessage %d,pog %c%s";
     int count = 3;
 
     ft_printf(str, count, 13, 'c', "banana");
