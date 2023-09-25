@@ -32,7 +32,7 @@ void ft_printf(char *str, int count, ...) {
         int specifier_index = 0;
         specifier_index = is_specifier(str[i], str[i+1]);
 
-        if(str[i+1] != 0 && specifier_index > 0) {
+        if(str[i + 1] != 0 && specifier_index > 0) {
 
             print_argument(va_arg(keys, void*), specifier_index);
 
@@ -50,9 +50,10 @@ void ft_printf(char *str, int count, ...) {
 
 }
 
+//testing main func
 int main(void) {
 
-    char *str = "Test Message %d";
+    char *str = "Test Message %d,pog";
     int count = 3;
 
     ft_printf(str, count, 13, 'c', "banana");
