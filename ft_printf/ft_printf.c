@@ -22,10 +22,19 @@ void ft_printf(char *str, int count, ...) {
     int i = 0;
     int param_index = 0;
 
+    if (count <= 0) {
+        put_string(str);
+        return;
+    }
+
     while(str[i] != 0) {
 
-        if(str[i+1] != 0 && is_specifier(str[i], str[i+1]) > 0) {
+        int specifier_index = 0;
+        specifier_index = is_specifier(str[i], str[i+1]);
 
+        if(str[i+1] != 0 && specifier_index > 0) {
+
+            print_argument(va_arg(keys, void*), specifier_index);
 
             param_index++;
             i += 2;
