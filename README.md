@@ -1,6 +1,8 @@
 # 42-Core-Curriculum
-## Jonas Kauker
-### 04.10.2023 - ...
 
-- [] ft_printf
-- [] ...
+## Jonas Kauker
+
+### 04.10.2023 - XXX
+
+- [ ] ft_printf
+- [ ] ...
