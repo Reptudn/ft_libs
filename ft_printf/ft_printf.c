@@ -19,6 +19,7 @@ What if the arguments are not in correcct order and i handle a string as int?
 -> gotta check for that
 */
 
+//only handles one specifier after prefix
 void ft_printf(char *str, int count, ...) {
 
     va_list keys;

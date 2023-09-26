@@ -54,14 +54,33 @@ void put_double(double num) {
         num = -num;
     }
 
+    int intpart = (int)num;
+    double decimal = num - intpart;
+
+    //before comma
+    while(intpart > 0) {
+
+        put_char((intpart % 10) + '0');
+        intpart /= 10;
+
+    }
+
+    put_char('.');
+
+    //after comma
+    while((int)decimal != decimal) {
+
+        decimal *= 10;
+        put_char((int)decimal + '0');
+        decimal -= (int)decimal;
+
+    }
+
 }
 
 void put_float(float num) {
 
-    if (num < 0) {
-        write(1, "-", 1);
-        num = -num;
-    }
+    put_double((double)num);
 
 }
 
