@@ -4,6 +4,7 @@
 #include "ft_printf.h"
 
 int is_specifier(char identifier, char type) {
+
     if (identifier != PREFIX) return 0;
     
     //i wish i ccould use a switch case here :c

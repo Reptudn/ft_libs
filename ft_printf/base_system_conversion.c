@@ -1,8 +1,13 @@
 #include <unistd.h>
 
+//for now only handles positive numbers
+//if number is negative it makes it positive
 void put_base(int num, int base) {
 
 	//how to handle minus?
+	//just print an extra 1 infront of it when its negative?
+
+	if(num < 0) num = -num;
 
 	while (num > 0) {
 
