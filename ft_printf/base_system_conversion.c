@@ -6,9 +6,11 @@ void put_base(int num, int base) {
 
 	//how to handle minus?
 	//just print an extra 1 infront of it when its negative?
-
-	if(num < 0) num = -num;
-
+	if(num < 0) {
+		write(1, "-", 1); //for now i print a normal minus
+		num = -num;
+	}
+	
 	while (num > 0) {
 
 		int n = (num % base);
