@@ -68,7 +68,7 @@ void put_double(double num) {
     put_char('.');
 
     //after comma
-    while((int)decimal != decimal) {
+    while(decimal != 0.0) {
 
         decimal *= 10;
         put_char((int)decimal + '0');

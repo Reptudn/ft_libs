@@ -15,14 +15,14 @@
 void	*memset(void *b, int c, size_t len)
 {
 	unsigned char	_c;
-	char			*str;
 	int				i;
 
 	_c = c;
-	str = (char *)b;
 	i = 0;
-	while ()
+	while (i < len)
 	{
-		b[i++] = 
+		((char *)b)[i++] = _c;
 	}
+
+	return (b);
 }
