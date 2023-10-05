@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 02:00:22 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 02:07:28 by jonask           ###   ########.fr       */
+/*   Created: 2023/10/05 10:17:35 by jonask            #+#    #+#             */
+/*   Updated: 2023/10/05 10:20:22 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(const char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int		size;
-	int		i;
-	char	*dup;
+	int	i;
 
-	size = 0;
 	i = 0;
-	while (s[size] != 0)
-		size++;
-	dup = malloc((size + 1) * sizeof(char));
-	if (!dup)
-		return (0);
-	while (i <= size)
+	while (s[i] != 0)
 	{
-		dup[i] = s[i];
-		i++;
+		f(i, &s[i]);
 	}
-	dup[i] = 0;
-	return (dup);
 }
