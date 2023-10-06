@@ -6,10 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:23:41 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 12:39:47 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/06 10:40:51 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 !!!
 
 #include <stdlib.h>
@@ -34,47 +35,41 @@ int	substrcmp(const char *s1, const char *s2, int start_index)
 	while (s1[start_index + i] != 0 && s2[i] != 0)
 	{
 		if (s1[start_index + i] != s2[i])
-			return (0);
+			return (-1);
 		i++;
 	}
-	return (1);
+	return (i);
 }
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	int		i;
-	int		j;
-	int		set_count;
 	char	*str;
+	int		first;
+	int		last;
+	int		is_word;
+	int		t;
 
 	i = 0;
-	j = 0;
+	is_word = 0;
+	last = 0;
 	if (s1 == 0)
 		return (0);
+	first = s1[0];
 	while (s1[i] != 0)
-	{
-		if (s1[i] == s1[0] && substrcmp(s1, set, i))
+	{	
+		last = i;
+		t = substrcmp(s1, set, i)
+		if (t == -1)
+			is_word == 1;
+		if (is_word == 0 && t > 0)
 		{
-			i += getlen(set);
-			continue ;
+
+			i += t - 1;
 		}
-		set_count++;
 		i++;
 	}
 	str = malloc((set_count + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	i = 0;
-	while (i < set_count)
-	{
-		if (s1[i] == s1[0] && substrcmp(s1, set, i))
-		{
-			j += getlen(set);
-			continue ;
-		}
-		str[i] = s1[j];
-		i++;
-	}
 	str[i] = 0;
 	return (str);
 }
