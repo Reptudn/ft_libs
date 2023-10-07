@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 02:00:22 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 02:07:28 by jonask           ###   ########.fr       */
+/*   Created: 2023/10/05 00:27:24 by jonask            #+#    #+#             */
+/*   Updated: 2023/10/07 16:59:02 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
-char	*ft_strdup(const char *s)
+void	bzero(void *s, size_t n)
 {
-	int		size;
-	int		i;
-	char	*dup;
+	int	i;
 
-	size = 0;
 	i = 0;
-	while (s[size] != 0)
-		size++;
-	dup = malloc((size + 1) * sizeof(char));
-	if (!dup)
-		return (0);
-	while (i <= size)
+	while(i < n)
 	{
-		dup[i] = s[i];
+		s = 0;
+		s++;
 		i++;
 	}
-	dup[i] = 0;
-	return (dup);
 }

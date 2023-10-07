@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 00:27:24 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 00:30:26 by jonask           ###   ########.fr       */
+/*   Created: 2023/10/05 10:32:05 by jonask            #+#    #+#             */
+/*   Updated: 2023/10/07 16:58:25 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+!!!
 
-void	bzero(void *s, size_t n)
+#include <stdlib.h>
+
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	int		i;
+	char	*str;
 
 	i = 0;
-	while(i < n)
+	while(s[i] != 0)
 	{
-		s = 0;
-		s++;
+		str = malloc(sizeof(f(i, s[i])));
+		if (!str)
+			return (0);
 		i++;
 	}
+	return (str);
 }

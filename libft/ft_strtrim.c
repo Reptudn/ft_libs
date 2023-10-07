@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:23:41 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/06 12:31:41 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/07 15:44:34 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ char	*ft_strtrim(const char *s1, const char *set)
 	return (str);
 }
 
+/*
 #include <stdio.h>
 int	main(int argc, char **argv)
 {
 	argc++;
 	printf("%s\n", ft_strtrim(argv[1], argv[2]));
 }
+*/

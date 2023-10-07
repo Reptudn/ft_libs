@@ -6,13 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:53:21 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 20:48:19 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/07 16:57:34 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(const char c)
+int	ft_isspace(char c)
 {
-	if (c == ' ')
+	if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\v' || c == '\t')
 		return (1);
 	return (0);
 }
