@@ -10,29 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-!!!
-
-int	atoi(const char *nptr)
+int	ft_isspace(const char c)
 {
-	int	num;
+	if (c == ' ')
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	long	num;
 	int i;
+	int prefix;
 
 	num = 0;
 	i = 0;
-	if (nptr[0] == '-' || nptr[0] == '+')
+	prefix = 1;
+	while (ft_isspace(nptr[i]))
+	    i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		//handple pos and neg
+		if (nptr[i] == '-')
+		    prefix = -1;
 		i++;
 	}
-	else if (!(nptr[i] >= '0' && nptr[i] <= '9'))
+	if (!(nptr[i] >= '0' && nptr[i] <= '9'))
 		return (0);
 	while (nptr[i] != 0)
 	{
 		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
-			return (0);
+			break;
 		num += nptr[i] - '0';
-		num += 10;
+		num *= 10;
+		i++;
 	}
 	num /= 10;
-	return (num);
+	return ((int)num * prefix);
 }
