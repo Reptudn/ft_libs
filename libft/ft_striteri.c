@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:17:35 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 10:20:22 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:56:34 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	int	i;
 
 	i = 0;
+	if (s == 0)
+		return ;
 	while (s[i] != 0)
 	{
 		f(i, &s[i]);
+		i++;
 	}
 }
