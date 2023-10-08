@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:30:45 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 00:37:49 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 12:17:14 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*memcpy(void *dest, const void *src, size_t n)
 	while (i < n)
 	{
 		((char *)dest)[i] = ((char *)src)[i];
-		n++;
+		i++;
 	}
 	return (dest);
 }

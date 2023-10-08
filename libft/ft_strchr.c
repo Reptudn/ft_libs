@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:12 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/04 19:25:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/08 12:14:16 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*strchr(const char *s, int c)
 	while (s[i] != 0)
 	{
 		if (s[i++] == c)
-			return (&s[i]);
+			return (&((char *)s)[i]);
 	}
 	return (0);
 }

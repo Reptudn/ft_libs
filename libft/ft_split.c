@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 18:30:52 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/07 18:40:53 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_split(const char *s, char c)
 			return (0);
 		}
 		k = 0;
-		while (strs[j][k] != 0)
+		while (strs[j][k] != 0 && s[i] != c)
 			strs[j][k++] = s[i++];
 		if(s[i] == c)
 			j++;

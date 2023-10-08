@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:22:58 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 01:36:42 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 12:19:02 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	l_len = 0;
 	if (get_length(little) < 1)
 		return ((char *)big);
-	while (big[i] != 0)
+	while (big[i] != 0 && i < len)
 	{
 		if (big[i] == little[0] && substrcmp(big, little, i))
 			return (&(((char*)big)[i]));
