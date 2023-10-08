@@ -6,11 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:44:44 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:31:18 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:35:54 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

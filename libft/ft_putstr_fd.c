@@ -6,11 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:12:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/05 12:17:06 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:35:33 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

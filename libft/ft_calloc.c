@@ -6,13 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:58:37 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 16:22:33 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:34:53 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 !!!
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t nmenb, size_t size)
 {

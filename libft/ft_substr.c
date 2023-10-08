@@ -6,14 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:14:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 17:34:00 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:36:20 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 !!!
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

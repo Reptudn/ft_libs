@@ -6,11 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:26:28 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/08 21:30:39 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:35:16 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

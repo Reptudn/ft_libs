@@ -6,14 +6,14 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 18:40:53 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:35:39 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 !!!
 //what if two splitters are next to each other?
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	get_word_count(const char *s, char splitter)
 {

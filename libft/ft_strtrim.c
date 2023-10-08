@@ -6,11 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:23:41 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 15:44:34 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:36:17 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	getlen(const char *str)
 {

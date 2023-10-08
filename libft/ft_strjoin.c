@@ -6,14 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:36:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 17:59:12 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:35:52 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 !!!
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 int	getlen(const char *str)
 {

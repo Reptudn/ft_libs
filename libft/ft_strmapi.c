@@ -6,13 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:32:05 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 17:59:19 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:36:03 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 !!!
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
