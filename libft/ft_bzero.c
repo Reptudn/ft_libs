@@ -6,13 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:27:24 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/07 16:59:02 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:29:29 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	int	i;
 

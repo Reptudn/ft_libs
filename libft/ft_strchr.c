@@ -6,11 +6,11 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:12 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/08 12:14:16 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/08 21:31:48 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 

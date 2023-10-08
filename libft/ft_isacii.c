@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isacii.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:16:52 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/04 19:19:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/08 21:30:21 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isascii(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }
