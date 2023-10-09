@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:53:21 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:51:33 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 11:17:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	get_num(const char *nptr, int i)
 {
 	long	num;
 
+	num = 0;
 	while (nptr[i] != 0)
 	{
 		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
