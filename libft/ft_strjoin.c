@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:36:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:35:52 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 06:25:31 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-int	getlen(const char *str)
+static int	getlen(const char *str)
 {
 	int len;
 

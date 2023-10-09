@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:35:39 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 06:25:15 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "libft.h"
 
-int	get_word_count(const char *s, char splitter)
+static int	get_word_count(const char *s, char splitter)
 {
 	int	count;
 	int	words;

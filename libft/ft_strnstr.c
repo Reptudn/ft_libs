@@ -6,13 +6,13 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:22:58 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:36:10 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 06:27:39 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_length(const char *str)
+static int	get_length(const char *str)
 {
 	int	len;
 
@@ -24,7 +24,7 @@ int	get_length(const char *str)
 	return (len);
 }
 
-int	substrcmp(const char *s1, const char *s2, int start_index)
+static int	substrcmp(const char *s1, const char *s2, int start_index)
 {
 	int	i;
 
