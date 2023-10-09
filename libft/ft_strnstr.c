@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:22:58 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 06:27:39 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:52:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	while (big[i] != 0 && i < len)
 	{
 		if (big[i] == little[0] && substrcmp(big, little, i))
-			return (&(((char*)big)[i]));
+			return (&(((char *)big)[i]));
 		i++;
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 06:41:32 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 09:11:31 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:51:48 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	// add it to the array 
 	new->next = lst[0];
-
 }

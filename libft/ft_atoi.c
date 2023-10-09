@@ -6,13 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:53:21 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:14:05 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 10:51:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static int	ft_isspace(char c)
 {
-	if (c == ' ' || c == '\f' || c == '\n' || c == '\r' 
+	if (c == ' ' || c == '\f' || c == '\n' || c == '\r'
 		|| c == '\v' || c == '\t' || c == '\a' || c == '\b')
 		return (1);
 	return (0);
