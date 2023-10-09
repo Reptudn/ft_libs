@@ -6,7 +6,7 @@
 #    By: jonask <jonask@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 12:22:34 by jonask            #+#    #+#              #
-#    Updated: 2023/10/09 08:45:27 by jonask           ###   ########.fr        #
+#    Updated: 2023/10/09 09:13:36 by jonask           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ ar -rc libft.a *.o
 NAME = libft.a
 
 CFLAGS = -Wall -Werror -Wextra
-CFILES = (wildcard *.c)
+CFILES = ft_atoi.c ft_bzero.c ft_calloc.c ft_ascii.c ft_isalnum.c ft_isaplha.c /
+			ft_isdigit.c ft_isprint.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c /
+			ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
 OBJ = (wildcard *.o)
 

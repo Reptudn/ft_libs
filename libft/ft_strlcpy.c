@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:37:45 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:35:57 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 09:07:37 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[i] = 0;
-	return (i);
+	return (sizeof(dst) + sizeof(src) - 1);
 }
