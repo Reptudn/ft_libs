@@ -6,7 +6,7 @@
 #    By: jonask <jonask@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 12:22:34 by jonask            #+#    #+#              #
-#    Updated: 2023/10/09 06:19:45 by jonask           ###   ########.fr        #
+#    Updated: 2023/10/09 08:45:27 by jonask           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ NAME = libft.a
 CFLAGS = -Wall -Werror -Wextra
 CFILES = (wildcard *.c)
 
-OBJ = (wildcard *.c)
+OBJ = (wildcard *.o)
 
 SRCS = $(OBJ:%.o=%.c)
 

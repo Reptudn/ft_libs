@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:12 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/08 21:31:48 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 08:59:28 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (s[i] != 0)
 	{
-		if (s[i++] == c)
+		if (s[i] == c)
 			return (&((char *)s)[i]);
+		i++;
 	}
 	return (0);
 }
