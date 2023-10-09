@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:26:28 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 11:42:36 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:15:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	{
 		((unsigned char *)b)[i++] = (unsigned char)c;
 	}
+	((unsigned char *)b)[len] = 0;
 	return (b);
 }
