@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:58:37 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 06:27:54 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:04:51 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-!!!
 
 #include "libft.h"
 
 void	*ft_calloc(size_t nmenb, size_t size)
 {
-	if (nmenb == 0 || size == 0)
-		return (malloc(0));
-	if (nmenb * size > __INT_MAX__)
+	char	*pog;
+
+	pog = malloc(nmenb * size);
+	if (!pog)
 		return (0);
-	return (malloc(nmenb * size));
+	ft_bzero(pog, nmenb * size);
+	return (pog);
 }

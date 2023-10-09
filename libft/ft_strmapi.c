@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:32:05 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 09:07:57 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:24:23 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-!!!
 
 #include "libft.h"
 
@@ -25,7 +23,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	str = malloc(sizeof(s));
 	if (!str)
 		return (0);
-	while(s[i] != 0)
+	while (s[i] != 0)
 	{
 		str[i] = f(i, s[i]);
 		i++;

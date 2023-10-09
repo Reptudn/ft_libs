@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 08:42:47 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:15:10 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *pog;
+	t_list	*pog;
 
-	pog = malloc(sizeof(lst)); //check bcuz defrefwerence okay or not?
+	pog = malloc(sizeof(lst));
 	if (!pog)
 		return (0);
 	pog = lst;

@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 06:25:15 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:23:39 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-!!!
-//what if two splitters are next to each other?
 
 #include "libft.h"
 
@@ -22,13 +19,39 @@ static int	get_word_count(const char *s, char splitter)
 
 	words = 0;
 	count = 0;
-	while(s[count] != 0)
+	while (s[count] != 0)
 	{
 		if (s[count] == splitter)
 			words++;
 		count++;
 	}
-	return (count);
+	return (words);
+}
+
+static int	the_split(int i, char c, const char *s, char **strs)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	k = 0;
+	while (s[i + k] != 0 && s[i + k] != c)
+		k++;
+	strs[j] = malloc((k + 1) * sizeof(char));
+	if (!strs[j])
+	{
+		i = 0;
+		while (strs[i] != 0 || i < get_word_count(s, c))
+			free(strs[i++]);
+		return (0);
+	}
+	k = 0;
+	while (strs[j][k] != 0 && s[i] != c)
+		strs[j][k++] = s[i++];
+	if (s[i] == c)
+		j++;
+	i++;
+	return (1);
 }
 
 char	**ft_split(const char *s, char c)
@@ -45,24 +68,10 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	j = 0;
 	k = 0;
-	while(s[i] != 0)
+	while (s[i] != 0)
 	{
-		while(s[i + k] != 0 && s[i + k] != c)
-			k++;
-		strs[j] = malloc((k + 1) * sizeof(char));
-		if (!strs[j])
-		{
-			i = 0;
-			while (strs[i] != 0 || i < get_word_count(s, c))
-				free(strs[i++]);
+		if (the_split(i, c, s, strs) == 0)
 			return (0);
-		}
-		k = 0;
-		while (strs[j][k] != 0 && s[i] != c)
-			strs[j][k++] = s[i++];
-		if(s[i] == c)
-			j++;
-		i++;
 	}
 	return (strs);
 }

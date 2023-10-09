@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:27:24 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:34:49 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 10:14:15 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	int	i;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		s = 0;
 		s++;
