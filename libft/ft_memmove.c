@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:38:12 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:15:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 11:41:50 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		i;
 	char	*temp;
 
-	i = 0;
 	temp = (char *)src;
 	if (dest == 0 || src == 0)
 		return (0);

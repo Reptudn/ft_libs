@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:14:48 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:45:24 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/09 11:41:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	s1_count;
-	int	s2_count;
-	int	i;
+	int		s1_count;
+	int		s2_count;
+	size_t	i;
 
 	s1_count = 0;
 	s2_count = 0;
