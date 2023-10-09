@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:14:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:24:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:41:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char	*sub;
 	int		i;
 
-	if (start >= len)
+	if (start >= len || len == 0)
 		return (0);
 	size = len - start;
 	sub = malloc((size + 1) * sizeof(char));
@@ -30,6 +30,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		sub[i] = s[start + i];
 		i++;
 	}
-	sub[i] = 0;
+	sub[len] = 0;
 	return (sub);
 }

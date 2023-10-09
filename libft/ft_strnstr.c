@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:22:58 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:52:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:07:00 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static int	substrcmp(const char *s1, const char *s2, int start_index)
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	l_len;
+	size_t	i;
+	int		l_len;
 
 	i = 0;
 	l_len = 0;

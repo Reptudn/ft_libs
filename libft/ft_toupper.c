@@ -6,15 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:04:01 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 14:16:22 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:12:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c >= 'z')
-	{
-		return (c - 32);
-	}
+		return (c - ('a' - 'A'));
 	return (c);
 }

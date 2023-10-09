@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:23:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:35:18 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static int	the_split(int i, char c, const char *s, char **strs)
 char	**ft_split(const char *s, char c)
 {
 	char	**strs;
-	char	*str;
 	int		i;
 	int		j;
 	int		k;
@@ -72,6 +71,7 @@ char	**ft_split(const char *s, char c)
 	{
 		if (the_split(i, c, s, strs) == 0)
 			return (0);
+		i++;
 	}
 	return (strs);
 }
