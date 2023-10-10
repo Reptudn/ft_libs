@@ -6,19 +6,11 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:53:21 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/10 11:47:34 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:18:27 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\n' || c == '\r' || c == '\f'
-		|| c == '\v' || c == '\t')
-		return (1);
-	return (0);
-}
 
 static int	get_num(const char *nptr, int i)
 {
