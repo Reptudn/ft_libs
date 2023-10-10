@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:22:58 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 15:07:00 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:36:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,18 @@ static int	get_length(const char *str)
 	return (len);
 }
 
-static int	substrcmp(const char *s1, const char *s2, int start_index)
+static int	substrcmp(const char *s1, const char *s2, int start_index,
+	size_t max)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
+	if (get_length(s2) > get_length(s1))
+		return (0);
 	while (s1[start_index + i] != 0 && s2[i] != 0)
 	{
+		if (start_index + i == max && s1[i] != 0)
+			return (0);
 		if (s1[start_index + i] != s2[i])
 			return (0);
 		i++;
@@ -49,7 +54,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (big[i] != 0 && i < len)
 	{
-		if (big[i] == little[0] && substrcmp(big, little, i))
+		if (big[i] == little[0] && substrcmp(big, little, i, len))
 			return (&(((char *)big)[i]));
 		i++;
 	}
