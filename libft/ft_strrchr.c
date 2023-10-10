@@ -6,24 +6,24 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:43:43 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/10 12:58:48 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:19:33 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
 	char	*last_occ;
 
-	i = 0;
 	last_occ = 0;
-	if (c == 0)
-		return ((char *)s);
-	while (s[i] != 0)
+	while (*s != 0)
 	{
-		if (s[i] == c)
-			last_occ = &(((char *)s)[i]);
-		i++;
+		if (*s == (char)c)
+			last_occ = (char *)s;
+		s++;
 	}
+	if ((char)c == 0)
+		return ((char *)s);
 	return (last_occ);
 }
