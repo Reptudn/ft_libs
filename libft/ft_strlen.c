@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:13:38 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 15:06:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:37:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	if (s == 0)
-		return (0);
 	while (s[i] != 0)
 		i++;
 	return (i);
