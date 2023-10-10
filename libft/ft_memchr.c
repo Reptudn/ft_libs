@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:07:50 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 15:58:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 12:50:14 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (((unsigned char *)s)[i] == (unsigned char)c)
 			return (&(((void *)s)[i]));
+		i++;
 	}
 	return (0);
 }
