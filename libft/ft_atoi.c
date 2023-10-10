@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:53:21 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 11:28:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:47:34 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_isspace(char c)
 {
-	if (c == ' ' || c == '\f' || c == '\n' || c == '\r'
-		|| c == '\v' || c == '\t' || c == '\a' || c == '\b')
+	if (c == ' ' || c == '\n' || c == '\r' || c == '\f'
+		|| c == '\v' || c == '\t')
 		return (1);
 	return (0);
 }
@@ -44,6 +44,8 @@ int	ft_atoi(const char *nptr)
 
 	i = 0;
 	prefix = 1;
+	if (nptr[0] == '\007')
+		return (0);
 	while (ft_isspace(nptr[i]))
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
