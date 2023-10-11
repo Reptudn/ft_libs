@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:01:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/11 13:36:48 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 21:24:51 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static long	get_digits(long n)
 
 void	put_nb_in_str(long n, long digits, char *str)
 {
-	str[digits] = 0;
+	str[digits + 1] = 0;
 	while (n > 0)
 	{
-		str[digits - 1] = (n % 10) + '0';
+		str[digits] = (n % 10) + '0';
 		digits--;
 		n /= 10;
 	}
@@ -50,15 +50,19 @@ char	*ft_itoa(int n)
 	digits = get_digits(_n);
 	if (_n < 1)
 	{
-		digits++;
+		digits += 1;
 		str = malloc((digits + 1) * sizeof(char));
+		if (!str)
+			return (0);
 		str[0] = '-';
 		_n = -_n;
 	}
 	else
+	{
 		str = malloc((digits + 1) * sizeof(char));
-	if (!str)
-		return (0);
+		if (!str)
+			return (0);
+	}
 	put_nb_in_str(n, digits, str);
 	return (str);
 }
