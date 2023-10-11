@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:43:43 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/10 17:19:33 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 11:42:12 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 			last_occ = (char *)s;
 		s++;
 	}
-	if ((char)c == 0)
+	if ((char)c == '\0')
 		return ((char *)s);
 	return (last_occ);
 }
