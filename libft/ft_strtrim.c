@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:16:43 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 15:07:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 10:03:35 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 	i = 0;
 	while (start_index < end_index)
 		trimmed[i++] = s1[start_index++];
+	trimmed[i] = 0;
 	return (trimmed);
 }

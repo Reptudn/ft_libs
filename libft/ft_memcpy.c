@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:30:45 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 15:57:10 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 10:12:53 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	if (n == 0 || (dest == 0 && src == 0))
 		return (dest);
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
+	i = ft_strlcpy((unsigned char *)dest, (unsigned char *)src, n);
 	return (dest);
 }
