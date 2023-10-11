@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:58:37 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/10 12:01:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 09:33:50 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 void	*ft_calloc(size_t nmenb, size_t size)
 {
-	int	*pog;
+	int		*pog;
+	size_t	total;
 
-	pog = malloc(nmenb * size);
+	total = nmenb * size;
+	if (total / size != nmenb)
+		return (0);
+	pog = malloc(total);
 	if (!pog)
 		return (0);
-	ft_memset(pog, 0, nmenb * size);
+	ft_memset(pog, 0, total);
 	return (pog);
 }
