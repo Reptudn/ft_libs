@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:33:07 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:51:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 21:48:44 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	{
 		curr = last;
 		last = last->next;
-		del(curr);
-		free(curr);
-		curr = 0;
+		ft_lstdelone(curr, del);
 	}
 	free(lst);
 	lst = 0;
