@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:14:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/11 11:50:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 12:01:38 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*make_substring(const char *s, char *sub, int start, size_t size)
 	size_t	i;
 
 	i = 0;
-	while (s[start + i] != 0 && i < size)
+	while (s[start + i] != 0 && i + 1 < size)
 	{
 		sub[i] = s[start + i];
 		i++;

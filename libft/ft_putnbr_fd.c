@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:18:27 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/10 12:10:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 12:31:32 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ static int	is_special(int n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	c;
 	char	buffer[11];
 	int		i;
 
-	i = 11;
+	i = 10;
 	ft_memset(buffer, 'a', 11);
 	if (is_special(n, fd) == 1)
 		return ;
@@ -49,15 +48,14 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	while (n > 0)
 	{
-		c = n % 10 + '0';
-		buffer[i--] = c;
+		buffer[i--] = n % 10 + '0';
 		n /= 10;
 	}
 	i = 0;
-	while (buffer[i] != 0)
+	while (i < 11)
 	{
 		if (buffer[i] != 'a')
-			write(1, &buffer[i], 1);
+			write(fd, &buffer[i], 1);
 		i++;
 	}
 }
