@@ -6,22 +6,19 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:20:12 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 15:24:34 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 11:39:08 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
+	while (*s != 0)
 	{
-		if (s[i] == c)
-			return (&((char *)s)[i]);
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	if (c == '\0' && s[1] == c)
-		return (&((char *)s)[i]);
+	if ((char)c == '\0')
+		return ((char *)s);
 	return (0);
 }
