@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 00:30:45 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/11 10:37:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 21:05:50 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <sys/syslimits.h>
-#include <sys/unistd.h>
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
