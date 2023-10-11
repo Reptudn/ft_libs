@@ -6,15 +6,15 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:01:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/09 17:02:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:34:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_digits(int n)
+static long	get_digits(long n)
 {
-	int	digits;
+	long	digits;
 
 	digits = 0;
 	if (n < 0)
@@ -27,7 +27,7 @@ static int	get_digits(int n)
 	return (digits);
 }
 
-void	put_nb_in_str(int n, int digits, char *str)
+void	put_nb_in_str(long n, long digits, char *str)
 {
 	str[digits] = 0;
 	while (n > 0)
@@ -38,22 +38,22 @@ void	put_nb_in_str(int n, int digits, char *str)
 	}
 }
 
+//onlz minus not working
+
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		digits;
+	long	_n;
 
-	digits = get_digits(n);
-	if (n == 0)
-		return ("0");
-	if (n == -2147483648)
-		return ("-2147483648");
-	if (n < 1)
+	_n = n;
+	digits = get_digits(_n);
+	if (_n < 1)
 	{
 		digits++;
 		str = malloc((digits + 1) * sizeof(char));
 		str[0] = '-';
-		n = -n;
+		_n = -_n;
 	}
 	else
 		str = malloc((digits + 1) * sizeof(char));
