@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/11 21:44:46 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:02:38 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static int	the_split(char c, const char *s, char **strs)
 			i++;
 			curr_word_len++;
 		}
+		if (s[i + curr_word_len] == 0)
+			break ;
 		strs[str_index] = malloc(sizeof(char) * (curr_word_len + 1));
 		if (!strs[str_index])
 		{
