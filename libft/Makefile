@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+         #
+#    By: jonask <jonask@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 12:22:34 by jonask            #+#    #+#              #
-#    Updated: 2023/10/11 12:40:19 by jkauker          ###   ########.fr        #
+#    Updated: 2023/10/11 21:54:49 by jonask           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ fclean:clean
 re:
 		fclean all
 
-bonus:$(BONUS)
+bonus:
+		$(BONUS):$(BONOBJ)
+			ar -rcs $(NAME) $(BONUS) $(BONOBJ)
 
 clean:
 		rm -rf $(OBJ)
