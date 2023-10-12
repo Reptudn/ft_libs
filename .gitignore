@@ -2,5 +2,6 @@
 .DS_Store
 *.gch
 *.out
+*.o
 output/
 build/debug
