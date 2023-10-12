@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 14:50:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/12 15:43:06 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ char	**ft_split(const char *s, char c)
 	return (strs);
 }
 
-int main()
-{
-	char **strs = ft_split("    hi ad banana aple abc   ananas", ' ');
-	for (int i = 0; strs[i] != 0; i++){ // Fix: Loop until the null terminator
-		printf("%s\n", strs[i]);      // Fix: Print each string on a new line
-	}
-	return (0);
-}
+// int main()
+// {
+// 	char **strs = ft_split("    hi ad banana aple abc   ananas", ' ');
+// 	for (int i = 0; strs[i] != 0; i++){ // Fix: Loop until the null terminator
+// 		printf("%s\n", strs[i]);      // Fix: Print each string on a new line
+// 	}
+// 	return (0);
+// }
