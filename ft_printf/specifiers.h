@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:41 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:27:44 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/12 09:46:21 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,17 @@
 #define PREFIX		'%'
 
 #define CHAR		'c'
-#define DECIMAL		'd'
-#define FLOAT		'f'
 #define STRING		's'
 #define POINTER		'p'
+#define DECIMAL		'd'
+#define INTEGER		'i'
+#define UINTEGER	'u'
+#define HEXSMALL	'x'
+#define HEXBIG		'X'
+#define PERCENT		'%'
+
+#define SPACE		' '
+#define HASHTAG		'#'
+#define PLUS		'+'
 
 #endif

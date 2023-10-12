@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 08:37:28 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/12 09:44:10 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,18 @@ What if the arguments are not in correcct order and i handle a string as int?
 -> gotta check for that and handle it
 */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
+
 //remove the count and figure out how it works without the count
-int ft_printf(char *str, int count, ...) {
+int ft_printf(const char *str, ...) {
 
     va_list keys; //this makes err?
-    va_start(keys, count);
+    va_start(keys, str);
 
     int i = 0;
     int param_index = 0;
-
-    if (count <= 0) {
-        put_string(str);
-        return (1);
-    }
 
     while(str[i] != 0) {
 
@@ -48,10 +47,13 @@ int ft_printf(char *str, int count, ...) {
         specifier_index = is_specifier(str[i], str[i + 1]);
 
         if (str[i + 1] != 0 && str[i + 1] == '%')
+        {
             write(1, "%%", 1);
+            i++;
+            continue;
+        }
         else if(str[i + 1] != 0 && specifier_index > 0) {
 
-            printf("   va_arg: %s\n", va_arg(keys, char*));
             print_argument(va_arg(keys, void *), specifier_index);
 
             param_index++;
@@ -65,6 +67,7 @@ int ft_printf(char *str, int count, ...) {
     }
 
     va_end(keys);
+    return (i);
 
 }
 
@@ -73,6 +76,6 @@ int main(void) {
 
     int count = 3;
 
-    ft_printf("Test \nMessage %d,pog %c%s\n", count, 13, 'c', "banana");
+    ft_printf("Test \nMessage %d,pog %c%s\n", 'c', "banana");
 
 }

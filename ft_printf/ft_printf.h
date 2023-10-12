@@ -6,7 +6,7 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:27:19 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/12 09:49:52 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void put_float(float num);
 void put_pointer(void *ptr);
 
 //base_system_conversion.c
-void put_base(int num, int base);
+void put_base(int num, int base, int capital);
 
 #endif
