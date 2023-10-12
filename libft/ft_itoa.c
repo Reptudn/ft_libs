@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:01:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/12 12:57:48 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/12 12:58:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	put_nb_in_str(long n, long digits, char *str)
 		n /= 10;
 	}
 }
-
-//onlz minus not working
 
 char	*ft_itoa(int n)
 {
