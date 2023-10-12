@@ -6,20 +6,12 @@
 /*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/08 21:27:11 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/12 08:37:28 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-
 #include "specifiers.h"
 #include "ft_printf.h"
-
-#include <stdio.h>
-
-//testing includes
-#include <stdio.h>
 
 /*
 variable amount of arguments
@@ -28,14 +20,16 @@ https://www.tutorialspoint.com/cprogramming/c_variable_arguments.htm
 printf stuff
 https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm
 
+=> TYPES I HAVE TO HANDLE: cspdiuxX%
+
 cc ft_printf.c ft_printf.h conversion.c base_system_conversion.c helper.c specifiers.h
 
 What if the arguments are not in correcct order and i handle a string as int?
 -> gotta check for that and handle it
 */
 
-//only handles one specifier after prefix
-void ft_printf(char *str, int count, ...) {
+//remove the count and figure out how it works without the count
+int ft_printf(char *str, int count, ...) {
 
     va_list keys; //this makes err?
     va_start(keys, count);
@@ -45,7 +39,7 @@ void ft_printf(char *str, int count, ...) {
 
     if (count <= 0) {
         put_string(str);
-        return;
+        return (1);
     }
 
     while(str[i] != 0) {
@@ -53,10 +47,12 @@ void ft_printf(char *str, int count, ...) {
         int specifier_index = 0;
         specifier_index = is_specifier(str[i], str[i + 1]);
 
-        if(str[i + 1] != 0 && specifier_index > 0) {
+        if (str[i + 1] != 0 && str[i + 1] == '%')
+            write(1, "%%", 1);
+        else if(str[i + 1] != 0 && specifier_index > 0) {
 
             printf("   va_arg: %s\n", va_arg(keys, char*));
-            print_argument(va_arg(keys, void*), specifier_index);
+            print_argument(va_arg(keys, void *), specifier_index);
 
             param_index++;
             i += 2;
