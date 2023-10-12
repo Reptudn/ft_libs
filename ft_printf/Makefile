@@ -1,18 +1,20 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I ./
 
 SRCS = ft_printf.c ft_printf.h conversion.c base_system_conversion.c helper.c specifiers.h
 OBJS = $(SRCS:.c=.o)
 
-TARGET = a
+NAME = ft_printf.a
 
-all: $(TARGET)
+all: $(NAME)
 
-$TARGET: $(OBJS)
-	$(SS) $(CFLAGS) -o $@ $<
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(NAME): $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(NAME)
+
+fclean:clean
+	rm -rf $(OBJ)
+
+.PHONY all clean clean
