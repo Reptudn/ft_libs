@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 14:39:00 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:50:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static int	the_split(char c, const char *s, char **strs, int i)
 	{
 		while (s[i] == c)
 			i++;
+		if (s[i] == 0)
+			break ;
 		curr_word_len = get_word_len((char *)&s[i], c);
 		strs[str_index] = malloc(sizeof(char) * (curr_word_len + 1));
 		if (!strs[str_index])
@@ -95,4 +97,13 @@ char	**ft_split(const char *s, char c)
 	if (!the_split(c, s, strs, i))
 		return (0);
 	return (strs);
+}
+
+int main()
+{
+	char **strs = ft_split("    hi ad banana aple abc   ananas", ' ');
+	for (int i = 0; strs[i] != 0; i++){ // Fix: Loop until the null terminator
+		printf("%s\n", strs[i]);      // Fix: Print each string on a new line
+	}
+	return (0);
 }
