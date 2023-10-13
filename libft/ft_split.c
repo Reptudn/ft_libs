@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/13 10:34:29 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/13 11:14:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ static int	get_word_count(const char *s, char splitter)
 	{
 		while (s[count] == splitter)
 			count++;
+		if (s[count] != 0 && s[count] != splitter)
+			words++;
 		while (s[count] != splitter && s[count] != 0)
 			count++;
-		words++;
 	}
 	return (words);
 }
@@ -55,9 +56,12 @@ static int	the_split(int c, const char *s, char **strs, int i)
 {
 	char	*element;
 	int		word_count;
+	int		max;
 
+	max = i;
 	word_count = 0;
-	while (*s && !(*s == c && s + 1 == 0))
+	i = 0;
+	while (*s && !(*s == c && s + 1 == 0) && word_count < max)
 	{
 		i = 0;
 		while (*s == c)
@@ -67,12 +71,11 @@ static int	the_split(int c, const char *s, char **strs, int i)
 		element = malloc(sizeof(char) * (i + 1));
 		if (!element)
 		{
-			cleanup(strs, word_count);
+			cleanup(strs, word_count - 1);
 			return (0);
 		}
 		split_strcpy(element, s, c);
-		strs[word_count] = element;
-		word_count++;
+		strs[word_count++] = element;
 		s += i;
 	}
 	return (1);
@@ -81,21 +84,31 @@ static int	the_split(int c, const char *s, char **strs, int i)
 char	**ft_split(const char *s, char c)
 {
 	char	**strs;
-	int		i;
+	int		words;
 
-	strs = malloc((get_word_count(s, c)) * sizeof(char *));
+	words = get_word_count(s, c);
+	if (!c)
+	{
+		strs = malloc(2 * sizeof(char *));
+		if (!strs)
+			return (0);
+		strs[0] = ft_strdup(s);
+		strs[1] = 0;
+		return (strs);
+	}
+	strs = malloc((words + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
-	i = 0;
-	if (!the_split(c, s, strs, i))
+	strs[words] = 0;
+	if (!the_split(c, s, strs, words))
 		return (0);
 	return (strs);
 }
 
 // int	main(void)
 // {
-// 	char **strs = ft_split("    hi ad banana aple abc   ananas ", ' ');
-// 	for (int i = 0; i < 6; i++)
+// 	char **strs = ft_split("      split       this for   me  !       ", ' ');
+// 	for (int i = 0; strs[i] != 0; i++)
 // 	{
 // 		printf("%s\n", strs[i]);
 // 	}

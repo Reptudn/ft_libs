@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:40:29 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 13:02:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:10:18 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	t_list	*last;
 
 	last = lst;
-	while (last->next != 0)
+	while (last != 0)
 	{
 		f(last->content);
 		last = last->next;

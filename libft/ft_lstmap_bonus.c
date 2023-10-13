@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/09 10:52:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/13 16:44:03 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*new_item;
 	t_list	*pog;
+	t_list	*i;
+	void	*f_ed_content;
 
-	pog = malloc(sizeof(lst));
-	if (!pog)
-		return (0);
-	pog = lst;
-	while (lst->next != 0)
+	pog = 0;
+	i = lst;
+	while (i != 0)
 	{
-		pog->content = f(pog->content);
-		if (pog->content == 0)
-			del(pog);
-		pog = pog->next;
+		f_ed_content = f(i->content);
+		new_item = ft_lstnew(f_ed_content);
+		if (new_item == 0)
+		{
+			del(f_ed_content);
+			ft_lstdelone(new_item, del);
+			ft_lstclear(&lst, del);
+			return (0);
+		}
+		ft_lstadd_back(&pog, new_item);
+		i = i->next;
 	}
-	lst = 0;
 	return (pog);
 }

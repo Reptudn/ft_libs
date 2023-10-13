@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:14:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 11:39:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:37:23 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*sub;
 
-	if (start >= ft_strlen(s))
+	if (start >= ft_strlen(s) || (start == 0 && len == 0))
 		return (ft_strdup(""));
 	if (!s)
 		return (0);
+	sub = malloc((len + 1) * sizeof(char));
 	if (len > ft_strlen(s))
 		len = ft_strlen(s) - start;
-	sub = malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (0);
 	makesub(sub, s + start, len + 1);
