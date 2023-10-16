@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 01:58:37 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/11 09:33:50 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/16 12:19:28 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <i386/limits.h>
 
 void	*ft_calloc(size_t nmenb, size_t size)
 {
 	int		*pog;
 	size_t	total;
 
-	total = nmenb * size;
-	if (total / size != nmenb)
+	if (size == 0 && nmenb > SIZE_T_MAX / size)
 		return (0);
+	if (nmenb > SIZE_T_MAX / size)
+		return (0);
+	total = nmenb * size;
 	pog = malloc(total);
 	if (!pog)
 		return (0);
