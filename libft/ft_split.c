@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/13 11:14:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/16 09:56:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ char	**ft_split(const char *s, char c)
 	char	**strs;
 	int		words;
 
+	if (s[0] == 0)
+	{
+		strs = malloc(1 * sizeof(char *));
+		strs[0] = 0;
+		return (strs);
+	}
 	words = get_word_count(s, c);
 	if (!c)
 	{
