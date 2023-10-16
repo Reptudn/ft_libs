@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 10:52:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:26:16 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	the_split(int c, const char *s, char **strs, int i)
 		element = malloc(sizeof(char) * (i + 1));
 		if (!element)
 		{
-			cleanup(strs, word_count - 1);
+			cleanup(strs, word_count);
 			return (0);
 		}
 		split_strcpy(element, s, c);
@@ -86,16 +86,7 @@ char	**ft_split(const char *s, char c)
 	char	**strs;
 	int		words;
 
-	if (!s)
-	{
-		strs = malloc(2 * sizeof(char *));
-		if (!strs)
-			return (0);
-		strs[0] = ft_strdup("");
-		strs[0] = 0;
-		return (strs);
-	}
-	else if (s[0] == 0)
+	if (!s || s[0] == 0)
 	{
 		strs = malloc(1 * sizeof(char *));
 		if (!strs)
@@ -103,16 +94,21 @@ char	**ft_split(const char *s, char c)
 		strs[0] = 0;
 		return (strs);
 	}
-	words = get_word_count(s, c);
 	if (!c)
 	{
 		strs = malloc(2 * sizeof(char *));
 		if (!strs)
 			return (0);
 		strs[0] = ft_strdup(s);
+		if (!strs[0])
+		{
+			free(strs);
+			return (0);
+		}
 		strs[1] = 0;
 		return (strs);
 	}
+	words = get_word_count(s, c);
 	strs = malloc((words + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
@@ -124,7 +120,7 @@ char	**ft_split(const char *s, char c)
 
 // int	main(void)
 // {
-// 	char **strs = ft_split("      split       this for   me  !       ", ' ');
+// 	char **strs = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
 // 	for (int i = 0; strs[i] != 0; i++)
 // 	{
 // 		printf("%s\n", strs[i]);
