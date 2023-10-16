@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 12:40:49 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/16 16:41:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (new_item == 0)
 		{
 			del(f_ed_content);
-			ft_lstclear(&lst, del);
 			ft_lstdelone(new_item, del);
+			ft_lstclear(&lst, del);
 			return (0);
 		}
 		ft_lstadd_back(&pog, new_item);
