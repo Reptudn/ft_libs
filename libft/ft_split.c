@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 15:44:56 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/16 16:15:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,8 @@ static int	get_word_count(const char *s, char splitter)
 	return (words);
 }
 
-// static void	split_strcpy(char *dest, const char *src, char splitter)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (src[i] != 0 && src[i] != splitter)
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	dest[i] = 0;
-// }
-
-static void	cleanup(char **strs, int allocated_word_cnt)
-{
-	while (allocated_word_cnt > 0)
-		free(strs[--allocated_word_cnt]);
-	free(strs);
-}
-
 static int	the_split(int c, const char *s, char **strs, int i)
 {
-	char	*element;
 	int		word_count;
 	int		max;
 
@@ -67,46 +46,58 @@ static int	the_split(int c, const char *s, char **strs, int i)
 			s++;
 		while (s[i] != c && s[i] != 0)
 			i++;
-		element = malloc(sizeof(char) * (i + 1));
-		if (!element)
+		strs[word_count] = ft_substr(s, 0, i);
+		if (!strs[word_count])
 		{
-			cleanup(strs, word_count);
+			while (word_count > 0)
+				free(strs[--word_count]);
+			free(strs);
 			return (0);
 		}
-		//split_strcpy(element, s, c);
-		//element = ft_substr(s, 0, i);
-		strs[word_count++] = ft_substr(s, 0, i);
+		word_count++;
 		s += i;
 	}
 	return (1);
 }
 
-char	**ft_split(const char *s, char c)
+static int	edgecase(const char *s, char c, char ***strs)
 {
-	char	**strs;
-
 	if (!s || s[0] == 0)
 	{
-		strs = malloc(1 * sizeof(char *));
-		if (!strs)
+		*strs = malloc(1 * sizeof(char *));
+		if (!*strs)
 			return (0);
-		strs[0] = 0;
-		return (strs);
+		(*strs)[0] = 0;
+		return (1);
 	}
 	if (!c)
 	{
-		strs = malloc(2 * sizeof(char *));
-		if (!strs)
+		*strs = malloc(2 * sizeof(char *));
+		if (!*strs)
 			return (0);
-		strs[0] = ft_strdup(s);
-		if (!strs[0])
+		(*strs)[0] = ft_strdup(s);
+		if (!(*strs)[0])
 		{
-			free(strs);
+			free(*strs);
 			return (0);
 		}
-		strs[1] = 0;
-		return (strs);
+		(*strs)[1] = 0;
+		return (1);
 	}
+	return (-1);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**strs;
+	int		edge;
+
+	strs = 0;
+	edge = edgecase(s, c, &strs);
+	if (edge == 1)
+		return (strs);
+	if (edge == 0)
+		return (0);
 	strs = malloc((get_word_count(s, c) + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
