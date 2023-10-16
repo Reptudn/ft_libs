@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 11:27:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/16 13:36:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static int	the_split(int c, const char *s, char **strs, int i)
 char	**ft_split(const char *s, char c)
 {
 	char	**strs;
-	int		words;
 
 	if (!s || s[0] == 0)
 	{
@@ -108,12 +107,11 @@ char	**ft_split(const char *s, char c)
 		strs[1] = 0;
 		return (strs);
 	}
-	words = get_word_count(s, c);
-	strs = malloc((words + 1) * sizeof(char *));
+	strs = malloc((get_word_count(s, c) + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
-	strs[words] = 0;
-	if (!the_split(c, s, strs, words))
+	strs[get_word_count(s, c)] = 0;
+	if (!the_split(c, s, strs, get_word_count(s, c)))
 		return (0);
 	return (strs);
 }
