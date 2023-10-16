@@ -1,16 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 12:39:55 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 15:44:56 by jkauker          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_split.c.old                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/05 12:39:55 by jonask            #+#    #+#              #
+#    Updated: 2023/10/16 15:45:55 by jkauker          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #include "libft.h"
+#include <stdlib.h>
 
 static int	get_word_count(const char *s, char splitter)
 {
@@ -31,18 +32,18 @@ static int	get_word_count(const char *s, char splitter)
 	return (words);
 }
 
-// static void	split_strcpy(char *dest, const char *src, char splitter)
-// {
-// 	int	i;
+static void	split_strcpy(char *dest, const char *src, char splitter)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (src[i] != 0 && src[i] != splitter)
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	dest[i] = 0;
-// }
+	i = 0;
+	while (src[i] != 0 && src[i] != splitter)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+}
 
 static void	cleanup(char **strs, int allocated_word_cnt)
 {
@@ -73,9 +74,8 @@ static int	the_split(int c, const char *s, char **strs, int i)
 			cleanup(strs, word_count);
 			return (0);
 		}
-		//split_strcpy(element, s, c);
-		//element = ft_substr(s, 0, i);
-		strs[word_count++] = ft_substr(s, 0, i);
+		split_strcpy(element, s, c);
+		strs[word_count++] = element;
 		s += i;
 	}
 	return (1);
