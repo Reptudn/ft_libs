@@ -6,7 +6,7 @@
 #    By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 12:22:34 by jonask            #+#    #+#              #
-#    Updated: 2023/10/13 12:13:07 by jkauker          ###   ########.fr        #
+#    Updated: 2023/10/17 12:17:12 by jkauker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,19 +19,21 @@ OBJ 	= $(CFILES:.c=.o)
 BONOBJ  = $(BONUS:.c=.o)
 CC		= cc
 
-all:$(NAME)
+.PHONY: all bonus clean fclean re
 
-$(NAME):$(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJ)
 		ar -rcs $(NAME) $(OBJ)
 
-fclean:clean
+bonus: $(BONOBJ)
+		ar -rcs $(NAME) $(BONOBJ)
+
+clean:
+		rm -rf $(OBJ) $(BONOBJ)
+
+fclean: clean
 		rm -f $(NAME)
 
 re:
 		fclean all
-
-clean:
-		rm -rf $(OBJ)
-
-bonus:$(BONOBJ)
-		ar -rcs $(NAME) $(OBJ) $(BONOBJ)
