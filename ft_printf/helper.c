@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 09:53:02 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/17 12:35:43 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,28 @@ int is_specifier(char identifier, char type) {
     if (type == INTEGER)    return INTEGER;
     if (type == UINTEGER)   return UINTEGER;
     if (type == HEXSMALL)   return HEXSMALL;
-    if (type == HEXBIG)     return HEXBIG;
+    if (type == HEXBIG) return HEXBIG;
     //add more
 
     return 0;
 }
 
-
-void print_argument(void *to_print, int type) {
-
-    if      (type == CHAR)      put_char(*(char*)to_print);
-    else if (type == STRING)    put_string((char*)to_print);
-    else if (type == POINTER)	put_pointer(to_print);
-    else if (type == DECIMAL)   put_number(*(double*)to_print);
-    else if (type == INTEGER)   put_number(*(int*)to_print);
-    else if (type == UINTEGER)  put_number(*(int*)to_print);
-    else if (type == HEXBIG)    put_base(*(int*)to_print, 16, 1);
-    else if (type == HEXSMALL)  put_base(*(int*)to_print, 16, 0);
+void	print_argument (void *to_print, int type)
+{
+    if (type == CHAR)
+		put_char(*(char *)to_print);
+    else if (type == STRING)
+		put_string((char *)to_print);
+    else if (type == POINTER)
+		put_pointer(to_print);
+    else if (type == DECIMAL)
+		put_number(*(double *)to_print);
+    else if (type == INTEGER)
+		put_number(*(int *)to_print);
+    else if (type == UINTEGER)
+		put_number(*(int *)to_print);
+    else if (type == HEXBIG)
+		put_base(*(int *)to_print, 16, 1);
+    else if (type == HEXSMALL)
+		put_base(*(int *)to_print, 16, 0);
 }
