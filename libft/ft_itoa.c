@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:01:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/12 12:58:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/17 13:27:28 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static long	get_digits(long n)
 	return (digits);
 }
 
-void	put_nb_in_str(long n, long digits, char *str)
+static void	put_nb_in_str(long n, long digits, char *str)
 {
 	str[digits] = 0;
 	digits--;

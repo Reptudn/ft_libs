@@ -6,13 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:16:43 by jkauker           #+#    #+#             */
-/*   Updated: 2023/10/12 15:38:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/17 13:29:01 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isinset(const char *set, char c)
+static int	isinset(const char *set, char c)
 {
 	int	i;
 

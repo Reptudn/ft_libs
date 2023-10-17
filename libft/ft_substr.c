@@ -6,13 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:14:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/16 12:07:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/17 13:29:07 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	makesub(char *dst, const char *src, size_t size)
+static void	makesub(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
