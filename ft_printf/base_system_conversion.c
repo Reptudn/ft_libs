@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 10:13:13 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:29:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //for now only handles positive numbers
 //if number is negative it makes it positive
 
-void	put_base(long num, int base, int capital)
+void	put_base(long num, int base, int capital, int *writecount)
 {
 	char	c;
 	int		n;
@@ -36,7 +36,10 @@ void	put_base(long num, int base, int capital)
 			else
 				c = n + 'a';
 		}
-		write(1, &c, 1);
+		if (write(1, &c, 1) == -1)
+			*writecount = -1;
+		else
+			*writecount += 1;
 		num /= base;
 	}
 }

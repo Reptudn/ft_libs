@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 10:12:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:09:03 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	is_specifier(char identifier, char type)
 		return ('x');
 	if (type == 'X')
 		return ('X');
+	if (type == 'i')
+		return ('i');
 	return (0);
 }
 
@@ -59,29 +61,26 @@ int	count_args(const char *str)
 	return (count);
 }
 
-void	print_argument(va_list *to_print, int type)
+void	print_argument(va_list *to_print, int type, int *writecount)
 {
 	if (to_print == 0 || type == 0)
 		return ;
 	if (type == CHAR)
-		put_char(va_arg(*to_print, int));
+		put_char(va_arg(*to_print, int), writecount);
 	else if (type == STRING)
-		put_string(va_arg(*to_print, char *));
+		put_string(va_arg(*to_print, char *), writecount);
 	else if (type == POINTER)
-		put_pointer(va_arg(*to_print, void *));
-	else if (type == DECIMAL)
-		put_number(va_arg(*to_print, double));
-	else if (type == INTEGER)
-		put_number(va_arg(*to_print, int));
-	else if (type == UINTEGER)
-		put_number(va_arg(*to_print, unsigned int));
+		put_pointer(va_arg(*to_print, void *), writecount);
+	else if (type == INTEGER || type == 'i'
+		|| type == DECIMAL || type == UINTEGER)
+		put_number(va_arg(*to_print, int), writecount);
 	else if (type == HEXBIG)
-		put_base(*va_arg(*to_print, long *), 16, 1);
+		put_base(*va_arg(*to_print, long *), 16, 1, writecount);
 	else if (type == HEXSMALL)
-		put_base(*va_arg(*to_print, long *), 16, 0);
+		put_base(*va_arg(*to_print, long *), 16, 0, writecount);
 }
 
-long	reverse_num(long num)
+long	reverse_num(unsigned long num)
 {
 	long		r;
 
