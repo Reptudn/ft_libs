@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 08:51:29 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:45:28 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //for now only handles positive numbers
 //if number is negative it makes it positive
 
-void	put_base(int num, int base, int capital)
+void	put_base(long num, int base, int capital)
 {
 	char	c;
 	int		n;

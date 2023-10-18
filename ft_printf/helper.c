@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:21:02 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:54:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,29 @@ int	is_specifier(char identifier, char type)
 	return (0);
 }
 
+int	count_args(const char *str)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i] != 0)
+	{
+		if (str[i + 1] != 0 && is_specifier(str[i], str[i + 1]))
+		{
+			count++;
+			i++;
+		}
+		i++;
+	}
+	return (count);
+}
+
 void	print_argument(va_list *to_print, int type)
 {
+	if (to_print == 0 || type == 0)
+		return ;
 	if (type == CHAR)
 		put_char(va_arg(*to_print, int));
 	else if (type == STRING)

@@ -6,11 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 08:51:54 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:45:42 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/_types/_intptr_t.h>
 #include <unistd.h>
+#include "ft_printf.h"
 
 void	put_string(char *str)
 {
@@ -57,38 +59,38 @@ void	put_long(long num)
 	}
 }
 
-void	put_double(double num)
-{
-	double	decimal;
-	int		intpart;
+// void	put_double(double num)
+// {
+// 	double	decimal;
+// 	int		intpart;
 
-    if (num < 0)
-	{
-		write(1, "-", 1);
-		num = -num;
-	}
-	intpart = (int)num;
-	decimal = num - intpart;
-	while (intpart > 0)
-	{
-		put_char((intpart % 10) + '0');
-		intpart /= 10;
-	}
-	put_char('.');
-	while (decimal != 0.0)
-	{
-		decimal *= 10;
-		put_char((int)decimal + '0');
-		decimal -= (int)decimal;
-	}
-}
+// 	if (num < 0)
+// 	{
+// 		write(1, "-", 1);
+// 		num = -num;
+// 	}
+// 	intpart = (int)num;
+// 	decimal = num - intpart;
+// 	while (intpart > 0)
+// 	{
+// 		put_char((intpart % 10) + '0');
+// 		intpart /= 10;
+// 	}
+// 	put_char('.');
+// 	while (decimal != 0.0)
+// 	{
+// 		decimal *= 10;
+// 		put_char((int)decimal + '0');
+// 		decimal -= (int)decimal;
+// 	}
+// }
 
-void	put_float(float num)
-{
-	put_double((double)num);
-}
+// void	put_float(float num)
+// {
+// 	put_double((double)num);
+// }
 
 void	put_pointer(void *ptr)
 {
-	put_long((intptr_t)ptr);
+	put_base((intptr_t)ptr, 16, 0);
 }

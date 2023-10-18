@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:06:40 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:54:32 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //helper.c
 int		is_specifier(char identifier, char type);
 void	print_argument(va_list *to_print, int type);
+int		count_args(const char *str);
 
 //conversion.c
 void	put_string(char *str);
