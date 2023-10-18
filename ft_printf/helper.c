@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 15:09:03 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:55:04 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_argument(va_list *to_print, int type, int *writecount)
 		put_pointer(va_arg(*to_print, void *), writecount);
 	else if (type == INTEGER || type == 'i'
 		|| type == DECIMAL || type == UINTEGER)
-		put_number(va_arg(*to_print, int), writecount);
+		put_long(va_arg(*to_print, long), writecount);
 	else if (type == HEXBIG)
 		put_base(*va_arg(*to_print, long *), 16, 1, writecount);
 	else if (type == HEXSMALL)

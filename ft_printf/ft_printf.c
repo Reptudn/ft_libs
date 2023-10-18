@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 15:12:28 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:56:17 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(void)
 {
 	int	i;
 
-	i = ft_printf("Test Message %c ,pog%i?apple\n", 'u', 2147483647);
+	i = ft_printf("Test Message %c ,pog%i?apple\n", 'u', -2147483649);
 	if (i == -1)
 		ft_printf("error: %d", i);
 }
