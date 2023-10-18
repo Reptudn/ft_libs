@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:33 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/12 09:37:23 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/18 08:39:56 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
-#define PRINTF_H
+# define PRINTF_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
 
-int ft_printf(char *str, ...);
+int	ft_printf(char *str, ...);
 
 #endif

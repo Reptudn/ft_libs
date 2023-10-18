@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I ./
+CFLAGS = -Wall -Werror -Wextra
 
 SRCS = ft_printf.c conversion.c base_system_conversion.c helper.c
 OBJS = $(SRCS:.c=.o)

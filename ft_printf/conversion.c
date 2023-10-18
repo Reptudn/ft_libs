@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/17 12:30:18 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 08:51:54 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	put_number(int num)
 		write(1, "-", 1);
 		num = -num;
 	}
-
 	while (num > 0)
 	{
 		put_char((num % 10) + '0');
@@ -46,13 +45,11 @@ void	put_number(int num)
 
 void	put_long(long num)
 {
-
 	if (num < 0)
 	{
 		write(1, "-", 1);
 		num = -num;
 	}
-
 	while (num > 0)
 	{
 		put_char((num % 10) + '0');
@@ -80,7 +77,6 @@ void	put_double(double num)
 	put_char('.');
 	while (decimal != 0.0)
 	{
-
 		decimal *= 10;
 		put_char((int)decimal + '0');
 		decimal -= (int)decimal;
