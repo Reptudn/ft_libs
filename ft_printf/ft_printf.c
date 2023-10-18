@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:22:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:30:26 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,17 @@ int	ft_printf(const char *str, ...)
 	while (str[i] != 0)
 	{
 		specifier_index = is_specifier(str[i], str[i + 1]);
-		printf("\nspecifier_index: %d\n", specifier_index);
-		if (str[i + 1] != 0 && str[i + 1] == '%')
+		if (str[i + 1] != 0 && str[i + 1] == '%' && str[i] == '%')
 		{
 			write(1, "%%", 2);
-			i += 2;
+			i++;
 			continue ;
 		}
 		else if (str[i + 1] != 0 && specifier_index > 0)
 		{
 			print_argument(&keys, specifier_index);
 			param_index++;
-			i += 3;
+			i += 2;
 			continue ;
 		}
 		put_char(str[i]);
