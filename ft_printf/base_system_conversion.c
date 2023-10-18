@@ -6,10 +6,11 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:45:28 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:13:13 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
 //for now only handles positive numbers
@@ -22,6 +23,7 @@ void	put_base(long num, int base, int capital)
 
 	if (num < 0)
 		num = -num;
+	num = reverse_num(num);
 	while (num > 0)
 	{
 		n = (num % base);

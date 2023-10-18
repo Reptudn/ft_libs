@@ -11,13 +11,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-re:
-	fclean all
-
 clean:
 	rm -f $(OBJS) $(NAME)
 
 fclean:clean
 	rm -rf $(OBJ)
+	
+re:fclean all
 
 .PHONY all clean clean

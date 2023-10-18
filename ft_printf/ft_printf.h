@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:54:32 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:13:09 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int		is_specifier(char identifier, char type);
 void	print_argument(va_list *to_print, int type);
 int		count_args(const char *str);
+long	reverse_num(long num);
 
 //conversion.c
 void	put_string(char *str);
@@ -30,6 +31,6 @@ void	put_float(float num);
 void	put_pointer(void *ptr);
 
 //base_system_conversion.c
-void	put_base(int num, int base, int capital);
+void	put_base(long num, int base, int capital);
 
 #endif

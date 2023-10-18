@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:45:42 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:14:25 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	put_number(int num)
 		write(1, "-", 1);
 		num = -num;
 	}
+	num = reverse_num((long)num);
 	while (num > 0)
 	{
 		put_char((num % 10) + '0');
@@ -52,6 +53,7 @@ void	put_long(long num)
 		write(1, "-", 1);
 		num = -num;
 	}
+	num = reverse_num(num);
 	while (num > 0)
 	{
 		put_char((num % 10) + '0');

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 09:54:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:12:11 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,17 @@ void	print_argument(va_list *to_print, int type)
 		put_base(*va_arg(*to_print, long *), 16, 1);
 	else if (type == HEXSMALL)
 		put_base(*va_arg(*to_print, long *), 16, 0);
+}
+
+long	reverse_num(long num)
+{
+	long		r;
+
+	r = 0;
+	while (num > 0)
+	{
+		r = (r * 10) + (num % 10);
+		num /= 10;
+	}
+	return (r);
 }
