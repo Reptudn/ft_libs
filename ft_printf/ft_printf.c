@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 15:56:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/19 09:29:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	ft_printf(const char *str, ...)
 		}
 		else if (str[i + 1] != 0 && specifier_index > 0)
 		{
+			if (argcount >= count_args(str))
+				return (-1);
 			i += 2;
 			print_argument(&keys, specifier_index, &writecount);
 			argcount++;
 			continue ;
-			if (argcount >= count_args(str))
-				return (-1);
 		}
 		if (str[i] != 0)
 			put_char(str[i++], &writecount);
