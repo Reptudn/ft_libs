@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/19 09:29:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/20 10:12:56 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i + 1] != 0 && str[i + 1] == '%' && str[i] == '%')
 		{
 			put_char('%', &writecount);
-			i++;
+			i += 2;
 			continue ;
 		}
 		else if (str[i + 1] != 0 && specifier_index > 0)
@@ -70,8 +70,14 @@ working:
 int	main(void)
 {
 	int	i;
+	int	og;
 
-	i = ft_printf("Test Message %c ,pog%i?apple\n", 'u', -2147483649);
+	i = ft_printf("Test Char: %c\nInt max: %i\nInt min: %i\nString: %s\nHex:\n", 'u', 2147483647, -2147483648, "42 Helbronn");
+	ft_printf("\n---------\n\n");
+	og = printf("Test Char: %c\nInt max: %i\nInt min: %li\nString: %s\nHex\n", 'u', 2147483647, -2147483648, "42 Helbronn");
 	if (i == -1)
 		ft_printf("error: %d", i);
+	ft_printf("\n---------\n\n");
+	ft_printf("[MY] Num of chars printed: %d\n", i);
+	printf("[OG] Num of chars printed: %d\n", og);
 }

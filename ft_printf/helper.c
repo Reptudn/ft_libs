@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/18 15:55:04 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/20 09:40:42 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	print_argument(va_list *to_print, int type, int *writecount)
 		put_base(*va_arg(*to_print, long *), 16, 0, writecount);
 }
 
-long	reverse_num(unsigned long num)
+long long	reverse_num(unsigned long long num)
 {
-	long		r;
+	long long		r;
 
 	r = 0;
 	while (num > 0)

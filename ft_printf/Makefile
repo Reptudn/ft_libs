@@ -4,19 +4,19 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS = ft_printf.c conversion.c base_system_conversion.c helper.c
 OBJS = $(SRCS:.c=.o)
 
-NAME = libprintf.a
+NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+		ar -rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS) $(NAME)
+		rm -f $(OBJS) $(NAME)
 
-fclean:clean
-	rm -rf $(OBJ)
+fclean: clean
+		rm -rf $(NMAE) $(OBJ)
 	
-re:fclean all
+re: fclean all
 
-.PHONY all clean clean
+.PHONY all clean clean re
