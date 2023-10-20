@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/20 10:12:07 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/20 10:55:30 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	put_string(char *str, int *writecount)
 	int	i;
 
 	i = 0;
-	while (str[i] != 0)
+	while (str[i] != 0 && *writecount != -1)
 	{
 		put_char(str[i], writecount);
 		i++;
@@ -42,7 +42,7 @@ void	put_number(int num, int *writecount)
 		num = -num;
 	}
 	num = reverse_num((long long)num);
-	while (num > 0)
+	while (num > 0 && *writecount != -1)
 	{
 		put_char((num % 10) + '0', writecount);
 		num /= 10;
@@ -57,7 +57,7 @@ void	put_long(long num, int *writecount)
 		num = -num;
 	}
 	num = reverse_num(num);
-	while (num > 0)
+	while (num > 0 && *writecount != -1)
 	{
 		put_char((num % 10) + '0', writecount);
 		num /= 10;
