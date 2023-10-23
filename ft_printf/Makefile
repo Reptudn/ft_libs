@@ -6,17 +6,17 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
 
+.PHONY: all clean clean re
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		ar -rcs $(NAME) $(OBJS)
 
 clean:
-		rm -f $(OBJS) $(NAME)
+		rm -rf $(OBJS)
 
 fclean: clean
-		rm -rf $(NMAE) $(OBJ)
+		rm -f $(NAME)
 	
 re: fclean all
-
-.PHONY all clean clean re
