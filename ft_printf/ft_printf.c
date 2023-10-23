@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/20 10:44:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:15:13 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ working:
 %s
 */
 
-int	main(void)
-{
-	int	i;
-	int	og;
+// int	main(void)
+// {
+// 	int	i;
+// 	int	og;
 
-	i = ft_printf("Test Char: %c\nInt max: %i\nInt min: %i\nString: %s\nHex: %X\n", 'u', 2147483647, -2147483648, "42 Helbronn", 42);
-	ft_printf("\n---------\n\n");
-	og = printf("Test Char: %c\nInt max: %i\nInt min: %li\nString: %s\nHex: %X\n", 'u', 2147483647, -2147483648, "42 Helbronn", 42);
-	if (i == -1)
-		ft_printf("error: %d", i);
-	ft_printf("\n---------\n\n");
-	ft_printf("[MY] Num of chars printed: %d\n", i);
-	printf("[OG] Num of chars printed: %d\n", og);
-}
+// 	i = ft_printf("Test Char: %c\nInt max: %i\nInt min: %i\nString: %s\nHex: %X\n", 'u', 2147483647, -2147483648, "42 Helbronn", 42);
+// 	ft_printf("\n---------\n\n");
+// 	og = printf("Test Char: %c\nInt max: %i\nInt min: %li\nString: %s\nHex: %X\n", 'u', 2147483647, -2147483648, "42 Helbronn", 42);
+// 	if (i == -1)
+// 		ft_printf("error: %d", i);
+// 	ft_printf("\n---------\n\n");
+// 	ft_printf("[MY] Num of chars printed: %d\n", i);
+// 	printf("[OG] Num of chars printed: %d\n", og);
+// }

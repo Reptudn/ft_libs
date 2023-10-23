@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/20 13:31:59 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:22:21 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	write_base(char base_buff[], int len, int *writecount)
 {
 	int	i;
 
-	i = 0;
+	i = 20 - len;
+	put_string("0x", writecount);
 	while (i < 20 && *writecount != 1)
 	{
 		if (base_buff[i] == 'a')
