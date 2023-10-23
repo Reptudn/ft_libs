@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/20 09:40:53 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:33:45 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include <sys/_types/_va_list.h>
+# include <stdlib.h>
 
 //helper.c
 int			is_specifier(char identifier, char type);
@@ -29,6 +30,9 @@ void		put_long(long num, int *writecount);
 void		put_double(double num, int *writecount);
 void		put_float(float num, int *writecount);
 void		put_pointer(void *ptr, int *writecount);
+
+// libft stuff
+char		*ft_itoa(int n);
 
 //base_system_conversion.c
 void		put_base(long num, int base, int capital, int *writecount);

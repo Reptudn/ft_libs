@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c conversion.c base_system_conversion.c helper.c
+SRCS = ft_printf.c ./utils/conversion.c ./utils/base_system_conversion.c ./utils/helper.c ./utils/itoa.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a

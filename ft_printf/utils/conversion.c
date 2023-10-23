@@ -6,13 +6,14 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 09:22:50 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:43:28 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <sys/_types/_intptr_t.h>
 #include <unistd.h>
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 void	put_char(char c, int *writecount)
 {
@@ -41,17 +42,17 @@ void	put_string(char *str, int *writecount)
 
 void	put_number(int num, int *writecount)
 {
-	if (num < 0)
+	char	*str;
+
+	str = ft_itoa(num);
+	if (!str)
 	{
-		put_char('-', writecount);
-		num = -num;
+		free(str);
+		*writecount = -1;
+		return ;
 	}
-	// num = reverse_num((long long)num);
-	while (num > 0 && *writecount != -1)
-	{
-		put_char((num % 10) + '0', writecount);
-		num /= 10;
-	}
+	put_string(str, writecount);
+	free(str);
 }
 
 void	put_long(long num, int *writecount)
