@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:26 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 14:57:17 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:24:51 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	print_argument(va_list *to_print, int type, int *writecount)
 	else if (type == UINTEGER)
 		put_long(va_arg(*to_print, unsigned int), writecount);
 	else if (type == HEXBIG)
-		put_base_hex(va_arg(*to_print, long long), 16, 1, writecount);
+		put_hex(va_arg(*to_print, long long), 1, 0, writecount);
 	else if (type == HEXSMALL)
-		put_base_hex(va_arg(*to_print, long long), 16, 0, writecount);
+		put_hex(va_arg(*to_print, long long), 0, 0, writecount);
 }
 
 long long	reverse_num(unsigned long long num)
