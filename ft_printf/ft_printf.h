@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 15:19:19 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:16:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long		get_digits(long n);
 void		put_nb_in_str(long n, long digits, char *str);
 
 //base_system_conversion.c
-void		put_base(long long num, int base,
+void		put_base(unsigned long num, int base,
 				int capital, int *writecount);
 
 void		put_base_hex(long long num, int base, int capital, int *writecount);

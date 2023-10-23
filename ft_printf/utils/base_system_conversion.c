@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 15:17:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:15:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	write_base_hex(char base_buff[], int len, int *writecount)
 	}
 }
 
-void	put_base(long long num, int base, int capital, int *writecount)
+void	put_base(unsigned long num, int base, int capital, int *writecount)
 {
 	char		c;
 	long long	n;
