@@ -6,22 +6,36 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:02 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 09:32:10 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:06:52 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+#include <limits.h>
 #include <unistd.h>
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}
 
 void	write_base(char base_buff[], int len, int *writecount)
 {
 	int	i;
 
-	i = 20 - len;
+	i = len;
 	put_string("0x", writecount);
-	while (i < 20 && *writecount != 1)
+	while (i < 21 && *writecount != -1)
 	{
-		if (base_buff[i] == 'a')
+		if (base_buff[i] == 'u')
 		{
 			i++;
 			continue ;
@@ -34,18 +48,37 @@ void	write_base(char base_buff[], int len, int *writecount)
 	}
 }
 
-// is printing them in the wrong order instead of 2A its printing A2
-void	put_base(long num, int base, int capital, int *writecount)
+void	write_base_hex(char base_buff[], int len, int *writecount)
 {
-	char	c;
-	int		n;
-	char	buff[20];
-	int		i;
+	int	i;
 
-	i = 19;
+	i = len;
+	while (i < 21 && *writecount != -1)
+	{
+		if (base_buff[i] == 'u')
+		{
+			i++;
+			continue ;
+		}
+		if (write(1, &base_buff[i], 1) == -1)
+			*writecount = -1;
+		else
+			*writecount += 1;
+		i++;
+	}
+}
+
+void	put_base(long long num, int base, int capital, int *writecount)
+{
+	char		c;
+	long long	n;
+	char		buff[21];
+	int			i;
+
+	i = 20;
 	if (num < 0)
 		num = -num;
-	//memset everything to 'a'
+	ft_memset(buff, 'u', 21);
 	while (num > 0 && *writecount != -1)
 	{
 		n = (num % base);
@@ -54,7 +87,7 @@ void	put_base(long num, int base, int capital, int *writecount)
 		else
 		{
 			if (capital)
-				c = n + 'A';
+				c = n - 10 + 'A';
 			else
 				c = n - 10 + 'a';
 		}
@@ -62,4 +95,33 @@ void	put_base(long num, int base, int capital, int *writecount)
 		num /= base;
 	}
 	write_base(buff, i, writecount);
+}
+
+void	put_base_hex(long long num, int base, int capital, int *writecount)
+{
+	char		c;
+	long long	n;
+	char		buff[21];
+	int			i;
+
+	i = 20;
+	if (num < 0)
+		num = -num;
+	ft_memset(buff, 'u', 21);
+	while (num > 0 && *writecount != -1)
+	{
+		n = (num % base);
+		if (n < 10)
+			c = n + '0';
+		else
+		{
+			if (capital)
+				c = n - 10 + 'A';
+			else
+				c = n - 10 + 'a';
+		}
+		buff[i--] = c;
+		num /= base;
+	}
+	write_base_hex(buff, i, writecount);
 }

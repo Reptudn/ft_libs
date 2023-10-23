@@ -6,10 +6,11 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 09:43:28 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:25:41 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include <stdlib.h>
 #include <sys/_types/_intptr_t.h>
 #include <unistd.h>
@@ -57,17 +58,25 @@ void	put_number(int num, int *writecount)
 
 void	put_long(long num, int *writecount)
 {
-	if (num < 0)
+	char	*str;
+
+	str = ltoa(num);
+	if (!str)
 	{
-		write(1, "-", 1);
-		num = -num;
+		free(str);
+		*writecount = -1;
+		return ;
 	}
-	// num = reverse_num((long long)num);
-	while (num > 0 && *writecount != -1)
-	{
-		put_char((num % 10) + '0', writecount);
-		num /= 10;
-	}
+	put_string(str, writecount);
+	free(str);
+}
+
+void	put_pointer(void *ptr, int *writecount)
+{
+	if (ptr == 0)
+		put_string("0x0", writecount);
+	else
+		put_base((uintptr_t)ptr, 16, 0, writecount);
 }
 
 // void	put_double(double num)
@@ -100,8 +109,3 @@ void	put_long(long num, int *writecount)
 // {
 // 	put_double((double)num);
 // }
-
-void	put_pointer(void *ptr, int *writecount)
-{
-	put_base(reverse_num((intptr_t)ptr), 16, 0, writecount);
-}

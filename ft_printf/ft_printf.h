@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 09:33:45 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:57:48 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ void		put_pointer(void *ptr, int *writecount);
 
 // libft stuff
 char		*ft_itoa(int n);
+char		*ltoa(long n);
+char		*ft_strdup(const char *s);
+long		get_digits(long n);
+void		put_nb_in_str(long n, long digits, char *str);
 
 //base_system_conversion.c
-void		put_base(long num, int base, int capital, int *writecount);
+void		put_base(long long num, int base,
+				int capital, int *writecount);
+
+void		put_base_hex(long long num, int base, int capital, int *writecount);
 
 #endif
