@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/25 09:04:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 10:20:22 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void		put_base(unsigned long num, int base,
 void		put_base_hex(long long num, int base, int capital, int *writecount);
 
 void		put_hex(long long num, int capital, int prefix, int *writecount);
+
+int			ft_printf(const char *str, ...);
 
 #endif

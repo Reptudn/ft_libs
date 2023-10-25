@@ -6,12 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/25 09:26:24 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:15:51 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/specifiers.h"
 #include "ft_printf.h"
+#include <limits.h>
 #include <sys/_types/_va_list.h>
 
 int	handle_percent(const char *str, int *i, int *writecount)
@@ -70,14 +71,7 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	int	i;
-// 	int	a;
-
-// 	i = ft_printf("paco is %s * %i | %p", "stupid", 10, (void *)"fr");
-// 	a = printf("paco is %s * %i | %p", "stupid", 10, (void *)"fr");
-// 	ft_printf("\n---------\n");
-// 	if (i == -1)
-// 		ft_printf("\nerror: %d", i);
-// 	else
-// 		ft_printf("me: %d\nog: %d\n", i, a);
+// 	printf("\n%d", ft_printf("%x", LONG_MAX));
+// 	printf("\n-------------\n");
+// 	printf("\n%d", printf("%x", LONG_MAX));
 // }
