@@ -6,22 +6,43 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/25 08:53:35 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:26:24 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/specifiers.h"
 #include "ft_printf.h"
+#include <sys/_types/_va_list.h>
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
+int	handle_percent(const char *str, int *i, int *writecount)
+{
+	if (str[*i + 1] != 0 && str[*i + 1] == '%' && str[*i] == '%')
+	{
+		put_char('%', writecount);
+		*i += 2;
+		return (1);
+	}
+	return (0);
+}
+
+int	handle_specifier(const char *str, int *i, int *writecount, va_list *keys)
+{
+	int	specifier_index;
+
+	specifier_index = is_specifier(str[*i], str[*i + 1]);
+	if (str[*i + 1] != 0 && specifier_index > 0)
+	{
+		*i += 2;
+		print_argument(keys, specifier_index, writecount);
+		return (1);
+	}
+	return (0);
+}
 
 int	ft_printf(const char *str, ...)
 {
 	va_list		keys;
 	int			i;
-	int			specifier_index;
 	int			argcount;
 	int			writecount;
 
@@ -31,21 +52,12 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	while (str[i] != 0)
 	{
-		if (writecount == -1)
+		if (writecount == -1 || argcount > count_args(str))
 			return (-1);
-		specifier_index = is_specifier(str[i], str[i + 1]);
-		if (str[i + 1] != 0 && str[i + 1] == '%' && str[i] == '%')
-		{
-			put_char('%', &writecount);
-			i += 2;
+		if (handle_percent(str, &i, &writecount) == 1)
 			continue ;
-		}
-		else if (str[i + 1] != 0 && specifier_index > 0)
+		else if (handle_specifier(str, &i, &writecount, &keys) == 1)
 		{
-			if (argcount >= count_args(str))
-				return (-1);
-			i += 2;
-			print_argument(&keys, specifier_index, &writecount);
 			argcount++;
 			continue ;
 		}
@@ -61,12 +73,11 @@ int	ft_printf(const char *str, ...)
 // 	int	i;
 // 	int	a;
 
-// 	a = 2;
-// 	i = ft_printf("%% %x %p %x %u %x %% %p %% %X\n", -364178243, (void *)-7518229393186887062, 276398723, 557198983, 297532191, (void *)8822975464332396424, 761798751);
-// 	printf("%% %x %p %x %u %x %% %p %% %X\n", -364178243, (void *)-7518229393186887062, 276398723, 557198983, 297532191, (void *)8822975464332396424, 761798751);
-// 	// ft_printf("\n---------\n");
-// 	// if (i == -1)
-// 	// 	ft_printf("error: %d", i);
-// 	// else
-// 	// 	ft_printf("[MY] Num of chars printed: %d\n", i);
+// 	i = ft_printf("paco is %s * %i | %p", "stupid", 10, (void *)"fr");
+// 	a = printf("paco is %s * %i | %p", "stupid", 10, (void *)"fr");
+// 	ft_printf("\n---------\n");
+// 	if (i == -1)
+// 		ft_printf("\nerror: %d", i);
+// 	else
+// 		ft_printf("me: %d\nog: %d\n", i, a);
 // }

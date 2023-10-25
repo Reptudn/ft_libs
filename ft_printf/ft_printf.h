@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:17 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 16:16:31 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:04:08 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <sys/_types/_va_list.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
 
 //helper.c
 int			is_specifier(char identifier, char type);
