@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:27:09 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 17:02:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:53:35 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,14 @@ int	ft_printf(const char *str, ...)
 // int	main(void)
 // {
 // 	int	i;
+// 	int	a;
 
-// 	i = ft_printf("%%");
-// 	ft_printf("\n---------\n\n");
-// 	if (i == -1)
-// 		ft_printf("error: %d", i);
-// 	ft_printf("\n---------\n\n");
-// 	ft_printf("[MY] Num of chars printed: %d\n", i);
+// 	a = 2;
+// 	i = ft_printf("%% %x %p %x %u %x %% %p %% %X\n", -364178243, (void *)-7518229393186887062, 276398723, 557198983, 297532191, (void *)8822975464332396424, 761798751);
+// 	printf("%% %x %p %x %u %x %% %p %% %X\n", -364178243, (void *)-7518229393186887062, 276398723, 557198983, 297532191, (void *)8822975464332396424, 761798751);
+// 	// ft_printf("\n---------\n");
+// 	// if (i == -1)
+// 	// 	ft_printf("error: %d", i);
+// 	// else
+// 	// 	ft_printf("[MY] Num of chars printed: %d\n", i);
 // }

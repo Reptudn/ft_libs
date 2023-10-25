@@ -6,10 +6,11 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:52 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/23 16:14:52 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:39:48 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <sys/_types/_intptr_t.h>
@@ -75,6 +76,8 @@ void	put_pointer(void *ptr, int *writecount)
 {
 	if (ptr == 0)
 		put_string("0x0", writecount);
+	else if ((unsigned long) ptr < 0)
+		put_base(ULLONG_MAX - (unsigned long) ptr, 16, 0, writecount);
 	else
 		put_base((unsigned long) ptr, 16, 0, writecount);
 }
