@@ -22,11 +22,7 @@ char	*get_next_line(int fd)
 	static char	*last_line_end;
 	char		*file_content;
 
-	last_line_end = 0;
-	if (fd == -1)
-		return (0);
-	file_content = get_file_content(fd);
-	if (!file_content)
+	if (fd == READ_ERR || BUFFER_SIZE < 1)
 		return (0);
 	return (create_next_line_str(file_content, last_line_end));
 }

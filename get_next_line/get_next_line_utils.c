@@ -11,27 +11,16 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <unistd.h>
 
 size_t	get_buffer_length_dynamic(int fd)
 {
 	size_t		bufflen;
-	char	*readbuff;
+	char		*readbuff;
 
 	bufflen = 0;
 	while(read(fd, readbuff, 1) != EOF)
 		bufflen++;
 	return (bufflen);
-}
-
-char	*get_file_content(int fd)
-{
-	char	*content;
-
-	content = malloc(get_buffer_length_dynamic(fd) * sizeof(char));
-	if (!content)
-		return (0);
-	return (content);
 }
 
 char	*create_next_line_str(char	*content, char *last_nl)
@@ -42,13 +31,18 @@ char	*create_next_line_str(char	*content, char *last_nl)
 
 	line_length = 0;
 	last_nl++;
-	while(last_nl[line_length] != '\n' && last_nl[line_length] != 0)
+	while(last_nl[line_length] != '\n' && last_nl[line_length] != 0 && i < BUFFER_SIZE)
+	{
+		// malloc and read / get content
 		line_length++;
+		i++;
+	}
 	if (line_length == 0) //was already on end
 		return (0);
 	line = malloc(line_length * sizeof(char));
 	if (!line)
 		return (0);
+	i = 0;
 	while(i < line_length)
 	{
 		line[i] = last_nl[i];

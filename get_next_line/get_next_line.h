@@ -14,13 +14,17 @@
 # define GET_NEXT_LINE_H
 
 #include <stdlib.h>
+#include <unistd.h>
 
 # define READ_ERR -1
 # define EOF 0
 
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+# endif
+
 char	*get_next_line(int fd);
 size_t	get_buffer_length_dynamic(int fd);
-char	*get_file_content(int fd);
 char	*create_next_line_str(char	*content, char *last_nl);
 
 #endif
