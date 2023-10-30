@@ -4,6 +4,7 @@
 
 ### 04.10.2023 - XXX
 
-- [x] libft -> passed 125/100
-- [ ] ft_printf (current)
+- [x] libft          (125/100)
+- [x] ft_printf      (100/100)
+- [ ] get_next_line  (curr)
 - [ ] ...
