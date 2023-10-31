@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:36 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/15 16:13:51 by jonask           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:40:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-# define READ_ERR -1
-# define EOF 0
+# define FD_ERR -1
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+#  define BUFFER_SIZE 42
 # endif
 
 char	*get_next_line(int fd);
-size_t	get_buffer_length_dynamic(int fd);
-char	*create_next_line_str(char	*content, char *last_nl);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(char *str);
+void	*ft_realloc(void	*m, size_t add_size);
+void	ft_strlcat(char *dst, const char *src, size_t size);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
