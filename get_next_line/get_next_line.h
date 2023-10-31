@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:36 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/31 14:40:55 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:18:37 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define FD_ERR -1
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 2
 # endif
 
 char	*get_next_line(int fd);

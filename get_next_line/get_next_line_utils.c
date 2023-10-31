@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:21:49 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/31 14:29:38 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:08:14 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	*ft_realloc(void	*old, size_t new_size)
 {
 	char	*temp;
 
+	if (!*((char *)old))
+	{
+		old = malloc(1);
+		*((char *)old) = '\0';
+	}
 	temp = malloc(new_size);
 	if (!temp)
 		return (old);
