@@ -6,32 +6,34 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/11/02 09:40:48 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/02 11:02:40 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "stdio.h"
 
-void	ft_read(int fd, char **left)
+int	ft_read(int fd, char **left)
 {
 	char	buffer[BUFFER_SIZE];
-	int		total;
+	int		read_len;
 
-	total = 0;
 	if (!*left)
 	{
-		*left = malloc (10000000);
+		*left = malloc (100000 * sizeof(char));
 		**left = '\0';
 	}
 	while (!ft_strchr(buffer, '\n'))
 	{
-		if (read(fd, buffer, BUFFER_SIZE) < 1)
-			break ;
-		//*left = ft_realloc(*left, ft_strlen(*left) + read_len);
-		ft_strlcat(*left, buffer, 10000000);
+		read_len = read(fd, buffer, BUFFER_SIZE);
+		if (read_len < 1)
+			return (0);
+		//*left = ft_realloc(*left, ft_strlen(*left) + read_len + 2);
+		//ft_strlcat(*left, buffer, ft_strlen(*left) + read_len + 1);
+		ft_strlcat(*left, buffer, ft_strlen(*left) + read_len + 1);
 	}
 	(*left)[ft_strchr(*left, '\n') - *left + BUFFER_SIZE] = 0;
+	return (1);
 }
 
 char	*get_next_line(int fd)
@@ -42,7 +44,8 @@ char	*get_next_line(int fd)
 
 	if (fd == FD_ERR || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
 		return (0);
-	ft_read(fd, &left);
+	if (ft_read(fd, &left) == 0)
+		return (left);
 	len = ft_strchr(left, '\n') - left + 1;
 	tmp = malloc((len + 1) * sizeof(char));
 	if (!tmp)

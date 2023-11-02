@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:21:49 by jonask            #+#    #+#             */
-/*   Updated: 2023/11/02 08:57:29 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/02 10:49:08 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (ft_strlcpy(dst, src, size - i) + i);
 }
 
-void	*ft_realloc(void	*old, size_t new_size)
+void	*ft_realloc(void *old, size_t new_size)
 {
 	char	*temp;
 
@@ -103,12 +103,3 @@ void	*ft_realloc(void	*old, size_t new_size)
 	free(old);
 	return (temp);
 }
-
-// int main()
-// {
-// 	char *t = "hello";
-// 	t = malloc(6);
-// 	t = realloc(t, 10);
-// 	ft_strlcat(t, "1234567890abcdefgh", 20);
-// 	printf("%s\n", t);
-// }
