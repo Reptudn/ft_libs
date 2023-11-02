@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:26:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/10/31 15:30:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/02 09:40:48 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,23 @@
 
 void	ft_read(int fd, char **left)
 {
-	int		read_len;
 	char	buffer[BUFFER_SIZE];
 	int		total;
 
-	read_len = 0;
 	total = 0;
 	if (!*left)
 	{
-		*left = malloc (1);
+		*left = malloc (10000000);
 		**left = '\0';
 	}
 	while (!ft_strchr(buffer, '\n'))
 	{
-		read_len = read(fd, buffer, BUFFER_SIZE);
-		if (read_len < 1)
+		if (read(fd, buffer, BUFFER_SIZE) < 1)
 			break ;
-		printf("%s", buffer);
-		*left = ft_realloc(*left, ft_strlen(*left) + read_len);
-		ft_strlcat(*left, buffer, read_len);
-		total += read_len;
+		//*left = ft_realloc(*left, ft_strlen(*left) + read_len);
+		ft_strlcat(*left, buffer, 10000000);
 	}
-	(*left)[total] = 0;
+	(*left)[ft_strchr(*left, '\n') - *left + BUFFER_SIZE] = 0;
 }
 
 char	*get_next_line(int fd)
@@ -48,16 +43,12 @@ char	*get_next_line(int fd)
 	if (fd == FD_ERR || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
 		return (0);
 	ft_read(fd, &left);
-	printf("\n-------------\n\nafter read: %s\n==================\n", left);
-	len = 0;
-	while (left[len] != '\n')
-		len++;
-	len++;
+	len = ft_strchr(left, '\n') - left + 1;
 	tmp = malloc((len + 1) * sizeof(char));
 	if (!tmp)
 		return (0);
-	tmp = ft_memcpy(tmp, left, len);
+	tmp = ft_memcpy(tmp, left, len + 1);
 	tmp[len] = 0;
-	left += len + 1;
+	left += len;
 	return (tmp);
 }
