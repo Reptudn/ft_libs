@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:21:49 by jonask            #+#    #+#             */
-/*   Updated: 2023/11/02 12:11:27 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/02 12:52:15 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		dst++;
 	}
 	return (ft_strlcpy(dst, src, size - i) + i);
-}
-
-void	*ft_realloc(void *old, size_t new_size)
-{
-	char	*temp;
-
-	if (!*((char *)old))
-	{
-		old = malloc(1);
-		*((char *)old) = '\0';
-	}
-	temp = malloc(new_size + 1);
-	if (!temp)
-		return (old);
-	temp = ft_memcpy(temp, old, new_size);
-	free(old);
-	return (temp);
 }
