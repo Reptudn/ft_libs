@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 12:29:47 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 11:24:39 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ char	*get_line(int fd, char **str)
 		buffer[read_bytes] = '\0';
 		*str = ft_strjoin(*str, buffer);
 	}
-	if (**str == '\0')
-		return (0);
 	size = ft_strchr(*str, '\n') - *str + 1;
 	line = malloc((size + 1) * sizeof(char));
 	ft_strlcpy(line, *str, size + 1);
@@ -92,7 +90,7 @@ char	*get_line(int fd, char **str)
 
 char	*get_next_line(int fd)
 {
-	static char	*string = 0;
+	static char	*string;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
@@ -105,14 +103,10 @@ char	*get_next_line(int fd)
 		string[0] = '\0';
 	}
 	line = get_line(fd, &string);
-	if (!line)
-		return (0);
-	if (!string || string[0] == 0)
-		return (line);
 	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
-	if (!string || string[0] == 0)
+	if (!string)
 		return (0);
-	if (!line || line[0] == '\0')
+	if (!line)
 		return (0);
 	return (line);
 }
