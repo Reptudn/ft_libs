@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 10:50:30 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 10:57:57 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-static void	makesub(char *dst, char *src, size_t size)
+void	makesub(char *dst, char *src, size_t size)
 {
 	size_t	i;
 
@@ -62,9 +62,9 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 char	*get_line(int fd, char **str)
 {
 	char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	size_t	size;
 	ssize_t	read_bytes;
+	size_t	size;
+	char	*line;
 
 	buffer[BUFFER_SIZE] = '\0';
 	while (!ft_strchr(buffer, '\n'))
@@ -72,22 +72,12 @@ char	*get_line(int fd, char **str)
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes <= 0)
 		{
-			if (*str && **str)
-			{
-				line = ft_strdup(*str);
-				free(*str);
-				*str = 0;
-				return (line);
-			}
+			if (*str != 0 && **str != 0)
+				return (ft_strdup(*str));
 			return (0);
 		}
 		buffer[read_bytes] = '\0';
 		*str = ft_strjoin(*str, buffer);
-		if (!*str)
-		{
-			free(*str);
-			return (0);
-		}
 	}
 	size = ft_strchr(*str, '\n') - *str + 1;
 	line = malloc((size + 1) * sizeof(char));
