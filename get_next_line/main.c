@@ -6,13 +6,11 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:42:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/02 16:47:57 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 10:12:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <CUnit/CUnit.h>
 #include <fcntl.h>
-// #include <unistd.h>
 #include "get_next_line.h"
 #include <stdio.h>
 

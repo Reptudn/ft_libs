@@ -5,137 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 21:26:38 by jonask            #+#    #+#             */
-/*   Updated: 2023/11/02 17:49:57 by jkauker          ###   ########.fr       */
+/*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
+/*   Updated: 2023/11/03 10:20:37 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "stdio.h"
 #include <stddef.h>
 
-void	clean_static(char *left, size_t len)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < len)
-	{
-		left[i] = 0;
+	while (s[i] != 0)
 		i++;
-	}
-	if (left)
-	{
-		free(left);
-		left = NULL;
-	}
+	return (i);
 }
-// cuts away the left part of the string by size and meaybe realloctes it too
-void	ft_strcut(char	*left, size_t len)
+
+static void	makesub(char *dst, char *src, size_t size)
 {
 	size_t	i;
-	size_t	j;
-	char	*temp;
 
 	i = 0;
-	j = 0;
-	temp = malloc((ft_strlen(left) - len + 1) * sizeof(char));
-	if (!temp)
-		return ;
-	while (left[i] != '\0')
+	while (src[i] != 0 && (i + 1 < size))
 	{
-		if (i >= len)
-		{
-			temp[j] = left[i];
-			j++;
-		}
+		dst[i] = src[i];
 		i++;
 	}
-	temp[j] = '\0';
-	clean_static(left, ft_strlen(left));
-	left = ft_realloc(temp, ft_strlen(temp));
+	dst[i] = 0;
 }
 
-void	*ft_realloc(void *old, size_t new_size)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	char	*temp;
+	char	*sub;
 
-	if (!*((char *)old))
-	{
-		old = malloc(1);
-		((char *)old)[0] = '\0';
-	}
-	temp = malloc(new_size + 1);
-	if (!temp)
-		return (old);
-	temp = ft_memcpy(temp, old, new_size);
-	if (old)
-	{
-		clean_static(old, ft_strlen(old));
-		return (NULL);
-	}
-	return (temp);
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s) || (start == 0 && len == 0))
+		return (ft_strdup(""));
+	if (start == 0 && len >= ft_strlen(s))
+		return (ft_strdup(s));
+	if (len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	sub = malloc((len + 1) * sizeof(char));
+	if (!sub)
+		return (0);
+	makesub(sub, s + start, len + 1);
+	sub[len + 1] = 0;
+	return (sub);
 }
 
-int	ft_read(int fd, char **left)
+char	*get_line(int fd, char **str)
 {
 	char	buffer[BUFFER_SIZE + 1];
-	int		read_len;
+	char	*line;
+	size_t	size;
 
-	if (!*left)
+	buffer[BUFFER_SIZE] = '\0';
+	while (!ft_strchr(buffer, '\n') && read(fd, buffer, BUFFER_SIZE) > 0)
 	{
-		*left = malloc (BUFFER_SIZE * sizeof(char));
-		if (!*left)
-			return (0);
-		*left[0] = '\0';
-	}
-	buffer[BUFFER_SIZE] = 0;
-	while (!ft_strchr(buffer, '\n'))
-	{
-		read_len = read(fd, buffer, BUFFER_SIZE);
-		if (read_len < 1)
-			return (0);
-		*left = ft_realloc(*left, ft_strlen(*left) + read_len + 2);
-		if (!*left)
+		*str = ft_strjoin(*str, buffer);
+		if (!*str)
 		{
-			clean_static((char *)*left, BUFFER_SIZE + 1);
-			return (0);
+			free(*str);
+			return (NULL);
 		}
-		ft_strlcat(*left, buffer, ft_strlen(*left) + read_len + 1);
 	}
-	(*left)[ft_strlen(*left) + read_len + 1] = 0;
-	return (1);
+	size = ft_strchr(*str, '\n') - *str + 1;
+	line = malloc((size + 1) * sizeof(char));
+	ft_strlcpy(line, *str, size + 1);
+	line[size] = '\0';
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*left;
-	int			len;
-	char		*tmp;
+	static char	*string;
+	char		*line;
 
-	if (fd == FD_ERR || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
-		return (0);
-	if (ft_read(fd, &left) == 0)
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
+		return (NULL);
+	if (!string)
 	{
-		if (ft_strlen(left) == 0)
-			return (0);
-		return (left);
+		string = malloc(1 * sizeof(char));
+		if (!string)
+		{
+			free(string);
+			return (NULL);
+		}
+		string[0] = '\0';
 	}
-	len = ft_strchr(left, '\n') - left + 1;
-	tmp = malloc((len + 1) * sizeof(char));
-	if (!tmp)
-		return (0);
-	tmp = ft_memcpy(tmp, left, len + 1);
-	tmp[len] = 0;
-	if (left)
-		ft_strcut(left, ft_strchr(left, '\n') - left + 1);
-	return (tmp);
+	line = get_line(fd, &string);
+	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE + 1);
+	if (!string)
+	{
+		free(string);
+		return (NULL);
+	}
+	return (line);
 }
-
-/*
-Neu coden
-
-probably moving the pointer is a problem that i cant free the things
-from before the moving pointer after moving it -> gotta make a func
-that really clears up the string correctly ()
-*/

@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:57:00 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 10:12:43 by jkauker          ###   ########.fr       */
+/*   Created: 2023/10/08 21:26:36 by jonask            #+#    #+#             */
+/*   Updated: 2023/11/02 09:06:46 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
+# include <unistd.h>
+
+# define FD_ERR -1
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 2
 # endif
 
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_strdup(char *s1);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlcpy(char *dst, char *src, size_t size);
-
 char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(char *str);
+void	*ft_realloc(void	*m, size_t add_size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif
