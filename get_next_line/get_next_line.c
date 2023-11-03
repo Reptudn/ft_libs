@@ -6,12 +6,13 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 10:20:37 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 10:50:30 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stddef.h>
+#include <sys/_types/_ssize_t.h>
 
 size_t	ft_strlen(char *s)
 {
@@ -63,15 +64,29 @@ char	*get_line(int fd, char **str)
 	char	buffer[BUFFER_SIZE + 1];
 	char	*line;
 	size_t	size;
+	ssize_t	read_bytes;
 
 	buffer[BUFFER_SIZE] = '\0';
-	while (!ft_strchr(buffer, '\n') && read(fd, buffer, BUFFER_SIZE) > 0)
+	while (!ft_strchr(buffer, '\n'))
 	{
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes <= 0)
+		{
+			if (*str && **str)
+			{
+				line = ft_strdup(*str);
+				free(*str);
+				*str = 0;
+				return (line);
+			}
+			return (0);
+		}
+		buffer[read_bytes] = '\0';
 		*str = ft_strjoin(*str, buffer);
 		if (!*str)
 		{
 			free(*str);
-			return (NULL);
+			return (0);
 		}
 	}
 	size = ft_strchr(*str, '\n') - *str + 1;
@@ -87,14 +102,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) == -1)
-		return (NULL);
+		return (0);
 	if (!string)
 	{
 		string = malloc(1 * sizeof(char));
 		if (!string)
 		{
 			free(string);
-			return (NULL);
+			return (0);
 		}
 		string[0] = '\0';
 	}
@@ -103,7 +118,7 @@ char	*get_next_line(int fd)
 	if (!string)
 	{
 		free(string);
-		return (NULL);
+		return (0);
 	}
 	return (line);
 }
