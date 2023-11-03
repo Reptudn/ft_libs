@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 12:27:26 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:13:46 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,12 +205,10 @@ char	*get_next_line(int fd)
 		string[0] = '\0';
 	}
 	line = get_line(fd, &string);
-	if (!line)
-		return (0);
-	if(!string || string[0] == 0)
-		return (line);
-	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
 	if (!string || string[0] == 0)
+		return (NULL);
+	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
+	if (!string)
 		return (0);
 	if (!line || line[0] == '\0')
 		return (0);
@@ -220,7 +218,7 @@ char	*get_next_line(int fd)
 int main()
 {
     int fd = open("texttest.txt", O_RDONLY);
-	for (int i = 0; i < 14; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		printf("%s", get_next_line(fd));
 	}
