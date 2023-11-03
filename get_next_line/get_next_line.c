@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 14:13:20 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:29:58 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-char	*get_line(int fd, char **str)
+char	*get_line_mine(int fd, char **str)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	ssize_t	read_bytes;
@@ -77,6 +77,7 @@ char	*get_line(int fd, char **str)
 			if (*str != 0 && **str != 0)
 				return (ft_strdup(*str));
 			free(*str);
+			free(str);
 			*str = 0;
 			return (0);
 		}
@@ -106,12 +107,15 @@ char	*get_next_line(int fd)
 			return (0);
 		string[0] = '\0';
 	}
-	line = get_line(fd, &string);
+	line = get_line_mine(fd, &string);
 	if (!string || string[0] == 0)
 		return (NULL);
 	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
 	if (!string)
+	{
+		free(string);
 		return (0);
+	}
 	if (!line || line[0] == '\0')
 		return (0);
 	return (line);

@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 14:13:46 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:26:46 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ char	*get_line(int fd, char **str)
 			if (*str != 0 && **str != 0)
 				return (ft_strdup(*str));
 			free(*str);
+			free(str);
 			*str = 0;
 			return (0);
 		}
@@ -209,7 +210,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
 	if (!string)
+	{
+		free(string);
 		return (0);
+	}
 	if (!line || line[0] == '\0')
 		return (0);
 	return (line);
