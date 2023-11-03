@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 14:29:58 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 16:11:19 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (!sub)
 		return (0);
 	makesub(sub, s + start, len + 1);
-	sub[len + 1] = 0;
+	sub[len] = 0;
 	return (sub);
 }
 
@@ -77,8 +77,8 @@ char	*get_line_mine(int fd, char **str)
 			if (*str != 0 && **str != 0)
 				return (ft_strdup(*str));
 			free(*str);
-			free(str);
-			*str = 0;
+			if (str != 0)
+				free(str);
 			return (0);
 		}
 		buffer[read_bytes] = '\0';
@@ -86,7 +86,10 @@ char	*get_line_mine(int fd, char **str)
 	}
 	if (**str == '\0')
 		return (0);
-	size = ft_strchr(*str, '\n') - *str + 1;
+	if (!ft_strchr(*str, '\n'))
+		size = ft_strlen(*str) + 1;
+	else
+		size = ft_strchr(*str, '\n') - *str + 1;
 	line = malloc((size + 1) * sizeof(char));
 	ft_strlcpy(line, *str, size + 1);
 	line[size] = '\0';
@@ -112,10 +115,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
 	if (!string)
-	{
-		free(string);
 		return (0);
-	}
 	if (!line || line[0] == '\0')
 		return (0);
 	return (line);
