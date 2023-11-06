@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:57:00 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 10:12:43 by jkauker          ###   ########.fr       */
+/*   Created: 2023/11/04 08:33:30 by jkauker           #+#    #+#             */
+/*   Updated: 2023/11/06 08:46:39 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@
 #  define BUFFER_SIZE 32
 # endif
 
-size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
-char	*ft_strdup(char *s1);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlcpy(char *dst, char *src, size_t size);
+char	*strjoin(char *s1, char *s2);
+char	*substr(char *s, unsigned int start);
 
 char	*get_next_line(int fd);
 
