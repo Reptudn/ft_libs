@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_tester.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 14:42:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 10:23:06 by jkauker          ###   ########.fr       */
+/*   Created: 2023/11/04 08:33:30 by jkauker           #+#    #+#             */
+/*   Updated: 2023/11/04 08:44:55 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "get_next_line.h"
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main()
-{
-    int fd = open("texttest.txt", O_RDONLY);
-	for (int i = 0; i < 14; i++)
-	{
-		printf("%s", get_next_line(fd));
-	}
-	close(fd);
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
+char	*ft_strchr(char *s, int c);
+
+#endif

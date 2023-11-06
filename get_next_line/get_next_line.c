@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:46:57 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/03 16:11:19 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/03 16:37:47 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ char	*get_line_mine(int fd, char **str)
 	ssize_t	read_bytes;
 	size_t	size;
 	char	*line;
+	char 	*tmp;
 
-	buffer[BUFFER_SIZE] = '\0';
+	buffer[BUFFER_SIZE] = 0;
 	while (!ft_strchr(buffer, '\n'))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -76,13 +77,17 @@ char	*get_line_mine(int fd, char **str)
 		{
 			if (*str != 0 && **str != 0)
 				return (ft_strdup(*str));
-			free(*str);
-			if (str != 0)
-				free(str);
+			if (*str != 0)
+			{
+				free(*str);
+				*str = 0;
+			}
 			return (0);
 		}
-		buffer[read_bytes] = '\0';
-		*str = ft_strjoin(*str, buffer);
+		buffer[read_bytes] = 0;
+		tmp = ft_strjoin(*str, buffer);
+		free(*str);
+		*str = tmp;
 	}
 	if (**str == '\0')
 		return (0);
@@ -111,12 +116,18 @@ char	*get_next_line(int fd)
 		string[0] = '\0';
 	}
 	line = get_line_mine(fd, &string);
-	if (!string || string[0] == 0)
+	if (!string)
+	{
+		free(line);
 		return (NULL);
+	}
 	string = ft_substr(string, ft_strlen(line), BUFFER_SIZE);
 	if (!string)
+	{
+		free(line);
 		return (0);
-	if (!line || line[0] == '\0')
+	}
+	if (!line)
 		return (0);
 	return (line);
 }
