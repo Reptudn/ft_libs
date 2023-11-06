@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:27 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 09:51:08 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/06 11:27:46 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,15 @@ char	*strjoin(char *s1, char *s2)
 	size_t	i;
 
 	if (!s1)
+	{
+		free(s1);
 		return (ft_strdup(s2));
+	}
 	if (!s2)
+	{
+		free(s1);
 		return (ft_strdup(s1));
+	}
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(sizeof(char) * (len + 1));
