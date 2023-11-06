@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:01 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 11:48:11 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:42:43 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -44,7 +45,7 @@ char	*read_file(int fd, char **str)
 		if (read_amount == 0)
 			break ;
 		*str = strjoin(*str, buffer);
-		if (!str)
+		if (!*str)
 		{
 			return (0);
 		}
@@ -55,6 +56,7 @@ char	*read_file(int fd, char **str)
 	*str = substr(*str, ft_strchr(*str, '\n') - *str + 1, BUFFER_SIZE);
 	if (!*str)
 	{
+		free(line);
 		return (0);
 	}
 	buffer[0] = 0;
@@ -66,14 +68,21 @@ char	*get_next_line(int fd)
 	static char	*str = 0;
 	char		*line;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (0);
 	line = read_file(fd, &str);
 	if (!line)
 	{
+		free(str);
+		str = 0;
 		return (0);
 	}
 	if (line[0] == '\0')
+	{
+		free(line);
+		free(str);
+		str = 0;
 		return (0);
+	}
 	return (line);
 }

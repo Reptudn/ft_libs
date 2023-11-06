@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
+/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:27 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 11:48:50 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:41:52 by jonask           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	*strjoin(char *s1, char *s2)
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 	{
+		free(s1);
 		return (0);
 	}
 	while (*s1 != 0)
@@ -86,6 +87,7 @@ char	*strjoin(char *s1, char *s2)
 	while (*s2 != 0)
 		str[i++] = *s2++;
 	str[i] = 0;
+	free(s1);
 	return (str);
 }
 
