@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:01 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 11:34:00 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/06 11:48:11 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ char	*read_file(int fd, char **str)
 			break ;
 		*str = strjoin(*str, buffer);
 		if (!str)
+		{
 			return (0);
+		}
 	}
 	if (*str == 0)
 		return (0);
@@ -53,8 +55,6 @@ char	*read_file(int fd, char **str)
 	*str = substr(*str, ft_strchr(*str, '\n') - *str + 1, BUFFER_SIZE);
 	if (!*str)
 	{
-		free(*str);
-		*str = 0;
 		return (0);
 	}
 	buffer[0] = 0;
@@ -71,9 +71,6 @@ char	*get_next_line(int fd)
 	line = read_file(fd, &str);
 	if (!line)
 	{
-		free(line);
-		free(str);
-		str = 0;
 		return (0);
 	}
 	if (line[0] == '\0')
