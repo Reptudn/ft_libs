@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:30 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 08:46:39 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:19:21 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 42
 # endif
+
+char	*get_next_line(int fd);
 
 char	*ft_strchr(char *s, int c);
 char	*strjoin(char *s1, char *s2);
-char	*substr(char *s, unsigned int start);
-
-char	*get_next_line(int fd);
+char	*substr(char *s, unsigned int start, size_t len);
 
 #endif
