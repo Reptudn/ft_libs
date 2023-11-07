@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:42:21 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 10:43:44 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:11:53 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@
 
 int main()
 {
-    int fd = open("texttest.txt", O_RDONLY);
-	for (int i = 0; i < 20; i++)
+    int fd = open("./tests/alternate_line_nl_with_nl", O_RDONLY);
+	int i = 0;
+	char *p = 0;
+	while (i < 10)
 	{
-		printf("%s", get_next_line(fd));
+		p = get_next_line(fd);
+		printf("-----------------------\n");
+		printf("%s", p);
+		free(p);
+		i++;
 	}
+	printf("%s\n", p);
 	close(fd);
 }

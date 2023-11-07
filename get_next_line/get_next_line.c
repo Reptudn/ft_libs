@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:01 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/07 15:23:41 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:10:31 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*read_file(int fd, char **str)
 	char	buffer[BUFFER_SIZE + 1];
 	long	read_amount;
 	char	*line;
+	char	*temp;
 
 	read_amount = 0;
 	while (!ft_strchr(buffer, '\n'))
@@ -54,13 +55,17 @@ char	*read_file(int fd, char **str)
 	if (*str == 0)
 		return (0);
 	line = substr(*str, 0, ft_strchr(*str, '\n') - *str + 1);
-	*str = substr(*str, ft_strchr(*str, '\n') - *str + 1, BUFFER_SIZE);
-	if (!*str)
+	temp = substr(*str, ft_strchr(*str, '\n') - *str + 1, BUFFER_SIZE);
+	//free(str);
+	*str = temp;
+	if (!*str && read_amount <= 0)
 	{
 		free(line);
 		return (0);
 	}
 	buffer[0] = 0;
+	if (line && *line == 0)
+		return (0);
 	return (line);
 }
 
@@ -70,7 +75,12 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	{
+		free (str);
+		str = 0;
 		return (0);
+	}
+	// str = malloc(sizeof(char) * BUFFER_SIZE);
 	line = read_file(fd, &str);
 	if (!line)
 	{
@@ -78,5 +88,7 @@ char	*get_next_line(int fd)
 		str = 0;
 		return (0);
 	}
+	if (!str)
+		return (0);
 	return (line);
 }
