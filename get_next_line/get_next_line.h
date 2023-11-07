@@ -6,7 +6,7 @@
 /*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:30 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 11:07:14 by jkauker          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:18:50 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char	*get_next_line(int fd);
 char	*ft_strchr(char *s, int c);
 char	*strjoin(char *s1, char *s2);
 char	*substr(char *s, unsigned int start, size_t len);
+char	*ft_strdup(char *s);
 
 #endif

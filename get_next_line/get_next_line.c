@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonask <jonask@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbrnn.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 08:33:01 by jkauker           #+#    #+#             */
-/*   Updated: 2023/11/06 13:42:43 by jonask           ###   ########.fr       */
+/*   Updated: 2023/11/07 15:23:41 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,20 @@ char	*read_file(int fd, char **str)
 	char	*line;
 
 	read_amount = 0;
-	ft_memset(buffer, 0, BUFFER_SIZE + 1);
 	while (!ft_strchr(buffer, '\n'))
 	{
+		ft_memset(buffer, 0, BUFFER_SIZE + 1);
 		read_amount = read(fd, buffer, BUFFER_SIZE);
 		if (read_amount == -1)
 			return (0);
 		if (read_amount == 0)
 			break ;
-		*str = strjoin(*str, buffer);
 		if (!*str)
-		{
+			*str = ft_strdup(buffer);
+		else
+			*str = strjoin(*str, buffer);
+		if (!*str)
 			return (0);
-		}
 	}
 	if (*str == 0)
 		return (0);
@@ -73,13 +74,6 @@ char	*get_next_line(int fd)
 	line = read_file(fd, &str);
 	if (!line)
 	{
-		free(str);
-		str = 0;
-		return (0);
-	}
-	if (line[0] == '\0')
-	{
-		free(line);
 		free(str);
 		str = 0;
 		return (0);
