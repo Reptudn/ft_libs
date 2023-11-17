@@ -8,4 +8,4 @@
 |---|---| --- |
 |  libft |  125 | ✅ |
 |  ft_printf | 100  | ✅ |
-| get_next_line  | current  | 🏗 |
+| get_next_line  | 101  | ✅ |
